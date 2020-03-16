@@ -1,0 +1,76 @@
+{% extends "layout.html" %} {% block register %}
+<form action="" method="POST">
+  {{form.hidden_tag()}}
+  <div class="field">
+    {{form.username.label(class="label")}}
+    <div class="control has-icons-left has-icons-right">
+      {{form.username(class="input is-danger" if form.username.errors else "input",placeholder="Enter Username")}}
+      <span class="icon is-small is-left">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fa fa-check"></i>
+      </span>
+    </div>
+    {% if form.username.errors %}
+      {% for error in form.username.errors %}
+        <p class="help is-danger">{{error}}</p>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <div class="field">
+    {{form.email.label(class="label")}}
+    <div class="control has-icons-left has-icons-right">
+      {{form.email(class="input is-danger" if form.email.errors else "input",placeholder="Enter Email")}}
+      <span class="icon is-small is-left">
+        <i class="fa fa-envelope"></i>
+      </span>
+      <span class="icon is-small is-right">
+        <i class="fa fa-exclamation-triangle"></i>
+      </span>
+    </div>
+    {% if form.email.errors %}
+      {% for error in form.email.errors %}
+        <p class="help is-danger">{{error}}</p>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <div class="field">
+    {{form.password.label(class="label")}}
+    <div class="control">
+      {{form.password(class="input",placeholder="Enter Password")}}
+    </div>
+  </div>
+
+  <div class="field">
+    {{form.confirmPassword.label(class="label")}}
+    <div class="control">
+      {{form.confirmPassword(class="input",placeholder="Confirm Password")}}
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <label class="checkbox">
+        <input type="checkbox" />
+        I agree to the <a href="#">terms and conditions</a>
+        <p class="help">
+          Already Have an account ?
+          <a class="is-link" href="{{url_for('loginUser')}}">Login</a>
+        </p>
+      </label>
+    </div>
+  </div>
+
+  <div class="field is-grouped">
+    <div class="control">
+      {{form.submit(class="button is-link")}}
+    </div>
+    <div class="control">
+      <button class="button is-link is-light">Cancel</button>
+    </div>
+  </div>
+</form>
+{% endblock register %}

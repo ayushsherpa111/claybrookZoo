@@ -1,0 +1,30 @@
+* {
+  font-family: "Nunito Sans", sans-serif;
+}
+.head {
+  background: linear-gradient(90deg, #cf70f6 0%, #1f56ac 100%);
+  height: 0;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  animation: slideDown 600ms forwards 100ms normal;
+}
+@keyframes slideDown {
+  from {
+    height: 0px;
+    opacity: 0;
+    transform: translate(0px, -115px);
+  }
+  to {
+    opacity: 1;
+    height: 220px;
+    transform: translate(0px, 0px);
+  }
+}
+.content {
+  margin-top: 20px;
+  padding: 0 20px 0 20px;
+}
+.container {
+  padding-bottom: 20px !important;
+}
