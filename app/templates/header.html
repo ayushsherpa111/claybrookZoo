@@ -43,7 +43,7 @@
         </div>
         <img src="{{url_for('static',filename="images/bell.png")}}" class="bell" alt="" srcset="">
       </div>
-      {% if session.get('role',None) != None and session.get('role',None) != "Sponsor" %}
+      {% if session.get('current_user',None) and session.get('current_user')['role'] %}
       <a class="logout" href="logout">
         <img src="static/images/power.png" alt="">
       </a>

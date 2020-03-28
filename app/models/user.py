@@ -19,4 +19,11 @@ class User:
  
   def update(self,data):
     self.__dict__.update(data)
+  
+  def saveToDb(self,helper):
+    return helper.find_and_update({'email':self.email},self.__dict__)
+      
+
+  def approve(self,bool):
+    self.check = bool
     

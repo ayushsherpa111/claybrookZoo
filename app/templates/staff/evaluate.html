@@ -1,6 +1,5 @@
 {%extends 'staff/staffLayout.html'%} {% block content %}
 <link rel="stylesheet" href="static/css/staff/evaluate.css" />
-<script defer src="static/js/staff/evaluate.js"></script>
 <div class="evaluate">
   <table class="table is-fullwidth is-hoverable ">
     <thead>
@@ -16,28 +15,39 @@
     </thead>
     {% if evaluateUsers %}
     <tbody>
-      {% for user in evaluateUsers %}
+      {% if evaluateUsers.count() == 0 %}
+      <td colspan="7" class="empty">
+        <div >
+          <h1 class="title is-1">
+            No new Users
+          </h1>
+        </div>
+      </td>
+      {% endif %} {% for user in evaluateUsers %}
       <tr>
         <td>{{user.username}}</td>
         <td>{{user.email}}</td>
         <td>{{user.role}}</td>
         <td>{{user.registerDate}}</td>
         <td>
-          <button
-            class="tblIco"
-            onclick="archive('{{user.email}}')"
-          >
-            <img src="{{url_for("static",filename="images/archive.png")}}" alt="" srcset="" />
+          <button class="tblIco" onclick="archive('{{user.email}}')">
+            <img src="{{url_for("static",filename="images/archive.png")}}"
+            alt="" srcset="" />
           </button>
         </td>
         <td>
-          <button class="tblIco">
-            <img src="{{url_for("static",filename="images/approve.png")}}" alt="" srcset="">
+          <button
+            class="tblIco"
+            onclick="approve(this,'{{user.email}}','{{user.role}}')"
+          >
+            <img src="{{url_for("static",filename="images/approve.png")}}"
+            alt="" srcset="">
           </button>
         </td>
         <td>
           <a class="tblIco rotate" href="evaluate/{{user.email}}">
-            <img src="{{url_for("static",filename="images/ellipse.png")}}" alt="" srcset="" />
+            <img src="{{url_for("static",filename="images/ellipse.png")}}"
+            alt="" srcset="" />
           </a>
         </td>
       </tr>
@@ -46,4 +56,6 @@
     {% endif %}
   </table>
 </div>
+<script defer src="static/js/staff/evaluate.js"></script>
+
 {% endblock content %}

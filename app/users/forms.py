@@ -35,9 +35,16 @@ class LoginForm(FlaskForm):
   submit = SubmitField('Login')
 
 
+def changeUsername(field):
+  message = f"The given username is already taken"
+  def _taken(form,field):
+    if userDB.find_by_username(field.data).count() > 1:
+      raise ValidationError(message)
+  return _taken
+
 class StaffForm(FlaskForm):
   email = StringField('Email',validators=[DataRequired(),Email()],render_kw={'readonly':True})
-  username = StringField('Username',validators=[DataRequired(),Regexp("^[^\s<>][a-zA-Z0-9_]*$",message="Invalid Username")])
+  username = StringField('Username',validators=[DataRequired(),Regexp("^[^\s<>][a-zA-Z0-9_]*$",message="Invalid Username"),changeUsername('Username')])
   role = SelectField("Role",choices=[("Visitor","Visitor"),("Sponsor","Sponsor"),("Staff","Staff"),("Manager","Manager")],validators=[])
   submit = SubmitField('Change')
 

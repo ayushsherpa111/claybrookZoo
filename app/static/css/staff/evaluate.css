@@ -22,13 +22,16 @@
   padding: 14px;
   text-align: center;
 }
-.evaluate .table tbody{
+.evaluate .table tbody {
   background-color: #5b7ae6;
 }
 
 .evaluate .table tbody td {
   text-align: center;
   vertical-align: inherit;
+}
+.evaluate .table tbody td {
+  transition: all 200ms ease;
 }
 .table.is-hoverable tbody tr:not(.is-selected) {
   transition: all 200ms ease;
@@ -41,6 +44,7 @@
   color: white;
 }
 
+
 .tblIco {
   border: none;
   background-color: transparent;
@@ -48,6 +52,7 @@
   filter: grayscale(1);
   transition: all 300ms ease;
 }
+
 .tblIco:hover {
   filter: grayscale(0);
   cursor: pointer;
@@ -60,4 +65,14 @@
 
 .tblIco.rotate img:hover {
   transform: rotate(90deg);
+}
+
+.empty {
+  height: 100vh;
+  background-image: url("../../images/empy.png");
+}
+.empty div {
+  position: relative;
+  left: 11rem;
+  top: -7rem;
 }

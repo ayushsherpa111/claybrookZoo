@@ -26,7 +26,7 @@ class Manager(User):
 
 class Sponsor(User):
   def __init__(self, *args):
-    super().__init__(args)
+    super().__init__(args[0])
     args[1].update({'role':"Sponsor"})
     self.__dict__.update(args[1])
   

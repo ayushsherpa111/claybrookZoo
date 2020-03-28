@@ -8,12 +8,12 @@ class Helper:
   def __init__(self,db):
     self.db = db
 
-  def get_all_users(self):
+  def get_new_users(self):
     return self.db.find({'role':{'$ne':'Admin'},'checked':'False'})
-
+  
   def find_by_username(self,username):
     username = self.escapeEverything(username)
-    return self.db.find_one({'username':username})
+    return self.db.find({'username':username})
   
   def find_by_email(self,email):
     email = self.escapeEverything(email)
@@ -29,6 +29,8 @@ class Helper:
 
   def find_and_update(self,option,setVal):
     setVal = self.escapeEverything(setVal)
+    self.db.update_one(option,{"$set":setVal})
+    return True
 
   def register(self,user):
     user = self.escapeEverything(user)
@@ -49,7 +51,7 @@ class Helper:
     return data
 
 def checkSession(session,roles):
-  if session.get('email',None) and session.get("role",None) and session.get("role") in roles:
+  if session.get('current_user',None) and session.get('current_user')['role'] in roles:
     return True
   else:
     return False
@@ -65,4 +67,13 @@ def assignRole(role,object,newProp):
     newUser = Staff(object,newProp)
   return newUser
 
+
+def setSession(session,userInstance):
+  dct = {
+      'username':escape(userInstance['username']), 
+      'email' : escape(userInstance['email']),
+      'role': escape(userInstance["role"]),
+      "profile": userInstance.get('profile') if userInstance.get('profile',None) else "default.png" 
+  }
+  session['current_user'] = dct
 

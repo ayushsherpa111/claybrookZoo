@@ -1,0 +1,68 @@
+{%extends 'staff/staffLayout.html'%} {%block content%}
+<link
+  rel="stylesheet"
+  href="{{url_for('static',filename='css/staff/animals.css')}}"
+/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script
+  defer
+  src="{{url_for('static',filename='js/staff/animals.js')}}"
+></script>
+<div class="animalManagement">
+  <h1 class="title is-3">
+    Animal Management
+  </h1>
+  <div class="utils">
+    <div class="options">
+      <a class="button" onclick="displayModal()">
+        <img src="{{url_for('static',filename='images/add.png')}}" alt="" />
+        <p>New</p>
+      </a>
+      <a class="button">
+        <img src="{{url_for('static',filename='images/arch2.png')}}" alt="" />
+        <p>Archive</p>
+      </a>
+      <a class="button">
+        <img src="{{url_for('static',filename='images/thermo.png')}}" alt="" />
+        <p>Sick</p>
+      </a>
+      <a class="button">
+        <img src="{{url_for('static',filename='images/events.png')}}" alt="" />
+        <p>Events</p>
+      </a>
+    </div>
+
+    <div class="dynamicContent">
+      {% block dynamic%}
+      <div class="pie">
+        <canvas id="pie" width="350px" height="250px"></canvas>
+      </div>
+      {% endblock dynamic%}
+    </div>
+  </div>
+  <div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      <header class="modal-card-head">
+        <p class="modal-card-title">Select Animal Category</p>
+        <button class="delete" aria-label="close" onclick="displayModal()"></button>
+      </header>
+      <div class="categories">
+        <div class="animal">
+          <h1>Bird</h1>
+        </div>
+        <div class="animal">
+          <h1>Mammal</h1>
+        </div>
+        <div class="animal">
+          <h1>Reptile</h1>
+        </div>
+        <div class="animal">
+          <h1>Amphibian</h1>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

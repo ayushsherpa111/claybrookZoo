@@ -27,7 +27,8 @@ rel="stylesheet" href="{{url_for("static",filename="css/staff/editUser.css")}}">
     <div class="field">
       {{form.username.label(class="label")}}
       <div class="control has-icons-left has-icons-right">
-        {{form.username(class="input",value=user.username)}}
+        {{form.username(class="input is-danger" if form.username.errors else
+        "input",value=user.username)}}
         <span class="icon is-small is-left">
           <i class="fa fa-envelope"></i>
         </span>
@@ -41,9 +42,6 @@ rel="stylesheet" href="{{url_for("static",filename="css/staff/editUser.css")}}">
       <div class="select">
         {{form.role(class="input")}}
       </div>
-      {% if form.username.errors %} {% for error in form.username.errors %}
-      <p class="help is-danger">{{error}}</p>
-      {% endfor %} {% endif %}
     </div>
     <div class="field">
       <button class="button is-danger is-outlined">Cancel</button>

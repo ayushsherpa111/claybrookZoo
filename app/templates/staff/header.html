@@ -1,4 +1,5 @@
-<link rel="stylesheet" href="{{url_for('static',filename="css/staff/header.css")}}" />
+<link rel="stylesheet"
+href="{{url_for('static',filename="css/staff/header.css")}}" />
 
 <nav class="statBar">
   {% with messages = get_flashed_messages() %} {% if messages %}
@@ -16,14 +17,27 @@
         placeholder="Search..."
       />
       <span class="icon is-small is-left">
-        <img src='{{url_for("static",filename="images/search.png")}}' id="icon" />
+        <img
+          src='{{url_for("static",filename="images/search.png")}}'
+          id="icon"
+        />
       </span>
     </p>
     <div class="notifBell">
-      <img src='{{url_for("static",filename="images/bell.png")}}' alt="" srcset="" />
+      <img
+        src='{{url_for("static",filename="images/bell.png")}}'
+        alt=""
+        srcset=""
+      />
     </div>
     <div class="userProf">
-      <img src="{{url_for("static",filename="images/users/"+profile)}}" alt="" />
+      <div>
+        <span class="title is-7">{{session['current_user']['username']}}</span>
+        <span class="subtitle is-7">{{session['current_user']['role']}}</span>
+      </div>
+      <img
+      src="{{url_for("static",filename="images/users/"+session['current_user']['profile'])}}"
+      alt="" />
     </div>
   </div>
 </nav>

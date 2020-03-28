@@ -4,7 +4,7 @@
   background-color: var(--elemColor);
   width: 98%;
   margin-bottom: 16px;
-  height: 3.5rem;
+  height: 4rem;
   border-radius: 6px;
   display: flex;
   padding: 9px;
@@ -22,33 +22,49 @@
 }
 
 .notifBell {
-  width: 1.7rem;
-  margin: auto 3rem;
-  height: 1.5rem;
+  width: 2rem;
+  margin: auto 1rem;
+  height: 2.5rem;
   filter: invert(100%);
 }
 
-.notifBell:hover{
+.notifBell:hover {
   cursor: pointer;
 }
 
 .userProf {
-  height: 2rem;
-  width: 2rem;
+  height: 3rem;
+  width: auto;
   margin: auto 0;
+  display: flex;
+  padding: 6px;
   margin-right: 2rem;
+  align-items: center;
+}
+.userProf div {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
 }
 
+.userProf div span {
+  color: white;
+}
+
+.userProf div span.subtitle {
+  padding: 0;
+}
 .userProf img {
-  height: 2rem;
+  height: 3rem;
   border-radius: 50%;
-  border: 2px solid #767676;
+  width: 3rem;
+  margin-left: 0.5rem;
 }
 .userProf img:hover {
   cursor: pointer;
 }
 
-.subtitle{
+.subtitle {
   color: white;
   padding: 5px;
 }
