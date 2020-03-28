@@ -1,0 +1,34 @@
+:root {
+  --bgColor: #272f60;
+  --font-Color: #c7c1ca;
+  font-size: 16px;
+  --elemColor: #2e4190;
+  --text-primary: #a09dbb;
+  --transition-speed: 600ms;
+  --text-secondary: #fefefe;
+}
+* {
+  font-family: Raleway !important;
+}
+body {
+  padding: 0;
+  margin: 0;
+  color: var(--font-Color);
+  background-color: var(--bgColor);
+}
+.dashboard {
+  display: flex;
+  flex-direction: column;
+}
+
+body::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: #3b2d63;
+  border-radius: 8px;
+}
+.header{
+  margin-left: 5em;
+}

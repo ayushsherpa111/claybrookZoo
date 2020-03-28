@@ -1,0 +1,63 @@
+.evaluate {
+  margin-left: 5rem;
+  padding: 5px;
+  width: 93%;
+  margin-bottom: 16px;
+  margin-top: 12px;
+}
+.evaluate .table {
+  margin-left: 20px;
+  border-top-left-radius: 9px;
+  border-top-right-radius: 9px;
+  overflow: hidden;
+  color: white;
+}
+
+.evaluate .table thead {
+  background-color: #2a3b7f;
+  color: white;
+}
+.evaluate .table thead th {
+  color: white;
+  padding: 14px;
+  text-align: center;
+}
+.evaluate .table tbody{
+  background-color: #5b7ae6;
+}
+
+.evaluate .table tbody td {
+  text-align: center;
+  vertical-align: inherit;
+}
+.table.is-hoverable tbody tr:not(.is-selected) {
+  transition: all 200ms ease;
+}
+.table.is-hoverable tbody tr:not(.is-selected):hover {
+  background-color: #8c96d580 !important;
+  cursor: pointer;
+}
+.table tbody tr:hover .evaluate .table {
+  color: white;
+}
+
+.tblIco {
+  border: none;
+  background-color: transparent;
+  width: 3rem;
+  filter: grayscale(1);
+  transition: all 300ms ease;
+}
+.tblIco:hover {
+  filter: grayscale(0);
+  cursor: pointer;
+}
+
+.tblIco.rotate img {
+  height: 2.5rem;
+  transition: all 300ms ease;
+}
+
+.tblIco.rotate img:hover {
+  transform: rotate(90deg);
+}

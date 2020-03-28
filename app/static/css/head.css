@@ -4,14 +4,123 @@
   box-shadow: 0px 3px 17px 0px #a8aef6e3;
   position: sticky !important;
   animation: zooooom 700ms forwards 602ms;
+  background: var(--navBarBack) !important;
+  color: white;
+  box-shadow: 0px 6px 19px rgba(89, 162, 76, 0.25);
 }
-@keyframes zooooom {
+.navbar-item {
+  color: white;
+}
+a.navbar-item:hover {
+  background-color: #555;
+  color: #ffffff;
+}
+
+.navbar-menu {
+  min-height: 0 !important;
+}
+
+.navbar-item {
+  padding: 0 32px 0 32px;
+  transition: all 200ms ease-in;
+}
+
+@media screen and (min-width: 1024px) {
+  .navbar {
+    min-height: 1.25rem;
+  }
+}
+.active {
+  display: flex !important;
+  visibility: visible;
+  animation: zooooom 700ms forwards 0s;
+}
+.searchInp {
+  margin: 5px 0 5px 0;
+  width: 20em;
+  display: flex;
+  align-items: center;
+}
+.control.has-icons-left .icon {
+  border-right: 1px solid black;
+  height: 28px;
+  width: 2.3em;
+  margin: 5px auto;
+}
+@media screen and (max-width: 1023px) {
+  .navbar {
+    display: none;
+  }
+  .navbar-menu {
+    display: block !important;
+    background-color: #242c2a !important;
+    overflow: hidden;
+    animation: none;
+    text-align: center;
+  }
+  .searchInp {
+    margin: auto;
+    width: 28em;
+  }
+  .navbar-item {
+    padding: 6px 32px 6px 34px !important;
+  }
+  .events {
+    margin: 15px auto !important;
+  }
+}
+@keyframes dropDown {
   from {
     visibility: hidden;
-    opacity: 0;
   }
   to {
     visibility: visible;
-    opacity: 1;
   }
+}
+
+.events {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: white;
+  margin: auto;
+  padding: 5px;
+  margin-left: 18px;
+  margin-right: 10px;
+}
+
+.events .bell {
+  position: relative;
+  top: -30px;
+}
+.events .count {
+  background-color: red;
+  border-radius: 50%;
+  width: 28px;
+  height: 29px;
+  position: relative;
+  top: -13px;
+  left: 14px;
+  text-align: center;
+  border: 5px solid var(--navBarBack);
+  box-sizing: border-box;
+  line-height: 1;
+}
+
+.toggle {
+  background-color: var(--navBarBack);
+}
+
+.logout {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  margin: auto;
+  margin-left: 10px;
+  transition: all 200ms ease;
+}
+
+.logout:hover {
+  cursor: pointer;
+  filter: invert(100%);
 }

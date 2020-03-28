@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="{{url_for('static',filename="css/staff/header.css")}}" />
+
+<nav class="statBar">
+  {% with messages = get_flashed_messages() %} {% if messages %}
+  <div class="navbar-start">
+    {% for message in messages%}
+    <p class="subtitle">{{message}}</p>
+    {% endfor %}
+  </div>
+  {% endif %} {% endwith %}
+  <div class="navbar-end">
+    <p class="control has-icons-left ">
+      <input
+        class="input search is-rounded"
+        type="text"
+        placeholder="Search..."
+      />
+      <span class="icon is-small is-left">
+        <img src='{{url_for("static",filename="images/search.png")}}' id="icon" />
+      </span>
+    </p>
+    <div class="notifBell">
+      <img src='{{url_for("static",filename="images/bell.png")}}' alt="" srcset="" />
+    </div>
+    <div class="userProf">
+      <img src="{{url_for("static",filename="images/users/"+profile)}}" alt="" />
+    </div>
+  </div>
+</nav>

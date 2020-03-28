@@ -1,0 +1,75 @@
+{% extends 'staff/staffLayout.html' %} {% block content%}
+<link rel="stylesheet" href="static/css/staff/staff.css" />
+<div class="main">
+  <div class="stats">
+    <div class="infoCard">
+      <div class="info">
+        <p>{{total}}</p>
+        <p>Animals</p>
+      </div>
+      <div class="ico">
+        <img src="static/images/wild.png" alt="" srcset="" />
+      </div>
+    </div>
+    <div class="infoCard">
+      <div class="info">
+        <p>{{total}}</p>
+        <p>Compound</p>
+      </div>
+      <div class="ico">
+        <img src="static/images/mammals/paw.png" alt="" srcset="" />
+      </div>
+    </div>
+    <div class="infoCard">
+      <div class="info">
+        <p>{{total}}</p>
+        <p>Hothouse</p>
+      </div>
+      <div class="ico">
+        <img src="static/images/reptiles/dino.png" alt="" srcset="" />
+      </div>
+    </div>
+    <div class="infoCard">
+      <div class="info">
+        <p>{{total}}</p>
+        <p>Aviary</p>
+      </div>
+      <div class="ico">
+        <img src="static/images/birds/bird.png" alt="" srcset="" />
+      </div>
+    </div>
+    <div class="infoCard">
+      <div class="info">
+        <p>{{total}}</p>
+        <p>Aquarium</p>
+      </div>
+      <div class="ico">
+        <img src="static/images/fishes/fin.png" alt="" srcset="" />
+      </div>
+    </div>
+    <div class="infoCard">
+      <div class="info">
+        <p>{{total}}</p>
+        <p>Sick</p>
+      </div>
+      <div class="ico">
+        <img src="static/images/sick.png" alt="" srcset="" />
+      </div>
+    </div>
+  </div>
+  <div class="panel lastAdded">
+    <p class="panel-heading">
+      Last Added
+    </p>
+    <table class="table is-fullwidth">
+      <tr>
+        <th>Name</th>
+        <th>Species</th>
+        <th>Classification</th>
+        <th>Date Added</th>
+        <th>Location</th>
+      </tr>
+    </table>
+  </div>
+</div>
+{% endblock %}

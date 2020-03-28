@@ -4,10 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
-      {% if title %} {{title}} {% else %} Default Title {%endif%}
+      {% if title %} {{title}} {% else %} Claybrook Zoo {%endif%}
     </title>
     <link
-      href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap"
+      href="https://fonts.googleapis.com/css?family=Raleway"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="static/css/bulma/css/bulma.min.css" />
@@ -19,30 +19,41 @@
     <script src="static/js/index.js"></script>
   </head>
   <body>
-    <div class="container is-fluid head">
+    <script>
+      console.log("{{session}}");
+    </script>
+    {% if banner == True%}
+    <div
+      class="container is-fluid head"
+      style="transform: translate(0, -110px);"
+    >
       {% include 'banner.html' %}
     </div>
-    {% include 'header.html' %}
-    <div class="container">
-        {% with messages = get_flashed_messages(with_categories=true) %} 
-          {% if messages %}
-          <div class="content">
-           {% for category,msg in messages %}
-            <div class="{{category}}">
-              {{msg}}
-            </div>
-            {% endfor %} 
-          </div>
-          {% endif %} 
-        {% endwith %}
-      <div class="content block">
-        {% block content %}
-        <h1>Default</h1>
-        {% endblock %}
-      </div>
+    {%endif%} {% include 'header.html' %} {% block content %} {% endblock %}
+    <div class="container is-fluid">
+      {% block register %} {% endblock register %} {% with messages =
+      get_flashed_messages(with_categories=true) %} {% if messages %}
       <div class="content">
-        {% block register %} {% endblock register %}
+        {% for category,msg in messages %}
+        <div class="{{category}}">
+          {{msg}}
+        </div>
+        {% endfor %}
       </div>
+      {% endif %} {% endwith %}
     </div>
+    {% include 'footer.html' %}
+    <style>
+      @keyframes zooooom {
+        from {
+          visibility: hidden;
+          opacity: 0;
+        }
+        to {
+          visibility: visible;
+          opacity: 1;
+        }
+      }
+    </style>
   </body>
 </html>

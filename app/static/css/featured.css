@@ -1,0 +1,137 @@
+.subNav {
+  width: 100%;
+  height: 24em !important;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+  background-size: 100vw 100vh;
+  background-position: 0px -60px;
+  background-repeat: no-repeat;
+  animation: putBorder 500ms ease-in-out 500ms forwards;
+}
+@keyframes putBorder {
+  from {
+    box-shadow: none;
+  }
+  to {
+    box-shadow: inset 0px 116px 136px 6px #0000008a;
+  }
+}
+.subBar {
+  display: flex;
+  padding-top: 30px;
+  margin: auto 198px;
+  animation: disp 1600ms ease 200ms forwards !important;
+}
+
+@keyframes disp {
+  from {
+    visibility: hidden;
+  }
+  to {
+    visibility: visible;
+  }
+}
+
+.subBar > * {
+  margin-right: 15px;
+}
+
+.subBar .logoAndTitle {
+  margin-left: 25px;
+}
+.subBar .logoAndTitle h1 {
+  padding-left: 14px;
+  color: white;
+}
+.subBar img {
+  width: 53px;
+  height: 71px;
+}
+.subBar a {
+  display: flex;
+  align-items: center;
+  margin-top: 7px;
+  margin-left: 24px;
+  height: 46px;
+  text-transform: uppercase;
+  transition: all 100ms ease;
+}
+
+.subBar p {
+  color: white;
+  font-size: 1.5em;
+}
+
+.subBar a:hover {
+  border-bottom: 2px solid #ffffff;
+}
+
+
+.speech {
+  display: flex;
+  margin-left: 47%;
+  margin-top: 2.8rem;
+  height: 15em;
+  flex-direction: column;
+}
+.speech h1 {
+  height: 136px;
+  color: white;
+  font-weight: 900;
+}
+
+.options {
+  display: flex;
+  margin-left: 12em;
+}
+.speech .options button {
+  width: 139px;
+  margin-top: 9px;
+  border-radius: 0;
+}
+
+@media (max-width: 1010px) {
+  .banner {
+    padding-left: 18px !important;
+  }
+  .subBar {
+    margin: auto;
+    width: 100%;
+    flex-direction: column;
+  }
+  .subBar a {
+    justify-content: center;
+    height: 36px;
+  }
+  .subBar a:hover {
+    border-radius: 6px;
+  }
+  .container.speech .title {
+    display: none;
+  }
+  .container.is-fluid.subNav {
+    background-position: 0px;
+    background-size: 100vw 58vh;
+  }
+  .container.speech {
+    margin: auto;
+  }
+  .container.speech .options {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    margin: 8.2em auto;
+  }
+  .container.speech .options .button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 1020px) {
+  .toggle {
+    display: flex;
+  }
+  .navbar-menu {
+    flex-wrap: wrap-reverse !important;
+  }
+}

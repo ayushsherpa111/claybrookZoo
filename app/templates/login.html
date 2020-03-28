@@ -1,0 +1,96 @@
+{% extends "layout.html" %} {% block register %}
+<link rel="stylesheet" href="static/css/login.css" />
+<div class="loginBlock">
+  <div class="welcomeMessage">
+    <div class="welcomeSalamander">
+      <img src="static/images/welcome.jpg" alt="" />
+    </div>
+    <div
+      class="message"
+  style="background-color: {{color}}"
+    >
+      {% if fail %}
+      <h1
+        class="title is-4"
+        style="width: 300px; font-size: 1.1em; line-height: 1.4em;"
+      >
+        oops you entered the wrong email or password
+      </h1>
+      {% else %}
+      <h1 class="title is-3">
+        Welcome Back
+      </h1>
+      {% endif %}
+    </div>
+  </div>
+
+  <div class="panel">
+    <p class="panel-heading">
+      Login:
+    </p>
+    <div class="panel-block">
+      <form action="" method="POST">
+        {{form.hidden_tag()}}
+        <div class="field">
+          {{form.email.label(class="label")}}
+          <div class="control has-icons-left has-icons-right">
+            {{form.email(class="input is-danger" if form.email.errors else
+            "input",placeholder="Enter Email")}}
+            <span class="icon is-small is-left">
+              <i class="fa fa-envelope"></i>
+            </span>
+          </div>
+          {% if form.email.errors %} {% for error in form.email.errors %}
+          <p class="help is-danger">{{error}}</p>
+          {% endfor %} {% endif %}
+        </div>
+
+        <div class="field">
+          {{form.password.label(class="label")}}
+          <div class="control has-icons-left">
+            {{form.password(class="input is-danger" if form.password.errors else
+            "input",placeholder="Enter Password")}}
+            <span class="icon is-small is-left">
+              <i class="fa fa-key"></i>
+            </span>
+          </div>
+          {% if form.password.errors %} {% for error in form.password.errors %}
+          <p class="help is-danger">{{error}}</p>
+          {% endfor %} {% endif %}
+        </div>
+
+        <div class="field">
+          <div class="control">
+            {{form.rememberMe()}} Remember Me.
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            <p class="help">
+              Need an account ?
+              <a class="is-link" href="{{url_for('user.register')}}">Sign up now</a>
+            </p>
+            <p class="help"><a href="#">Forgot Password?</a></p>
+          </div>
+        </div>
+
+        <div class="field is-grouped">
+          <div class="control">
+            {{form.submit(class="button is-link",id="submitBtn")}}
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script>
+  let termsAndCondition = document.getElementById("terms");
+  let submit = document.getElementById("submitBtn");
+  submit.addEventListener("click", e => {
+    if (!termsAndCondition.checked) {
+      e.preventDefault();
+      console.log("Agree to the terms and condition");
+    }
+  });
+</script>
+{% endblock register %}

@@ -1,0 +1,27 @@
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+}
+.editUser {
+  margin: 20px auto;
+  width: 48%;
+}
+.editForm {
+  padding: 0.8rem 1rem;
+  background-color: #b3bdf4;
+}
+.field {
+  padding: 0.6rem;
+}
+.field label {
+  font-size: 1.2rem;
+}
+.select {
+  width: 100%;
+}
+.badge {
+  width: 1.5rem;
+}
+.field:last-child {
+  text-align: right;
+}

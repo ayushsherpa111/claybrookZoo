@@ -1,0 +1,52 @@
+.toggle:active .navbar-menu {
+  display: flex;
+}
+
+.helpLines {
+  margin-top: 25px;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 15px;
+  height: 399px;
+}
+.card {
+  margin: 10px;
+  height: 281px;
+  width: 376px;
+  transition: transform 320ms ease-in;
+}
+
+.infoCard {
+  background-color: coral;
+  padding: 10px;
+  position: relative;
+  top: -31px;
+  left: -19px;
+}
+
+.infoCard p {
+  font-size: 25px;
+  font-weight: 600;
+  color: white;
+}
+.infoCard span {
+  margin-left: 15px;
+  color: black;
+  font-weight: 350;
+}
+
+.card .image {
+  overflow: hidden;
+}
+.card:hover {
+  cursor: pointer;
+}
+.card:active {
+  transform: scale(0.99);
+}
+.card .image img {
+  transition: transform 1000ms ease;
+}
+.card .image img:hover {
+  transform: scale(1.1);
+}

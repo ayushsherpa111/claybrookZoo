@@ -1,0 +1,66 @@
+.loginBlock {
+  display: flex;
+}
+.welcomeMessage {
+  width: 800px;
+  display: flex;
+  height: auto;
+}
+.message {
+  background-color: #f7961f;
+  text-transform: uppercase;
+  position: relative;
+  padding: 8px;
+  height: fit-content;
+  left: -204px;
+  top: 50px;
+  width: 22em;
+  box-shadow: 2px 9px 15px #0000004f;
+}
+.message .title {
+  color: white !important;
+}
+
+.welcomeSalamander {
+  display: flex;
+  height: 358px;
+  width: 54%;
+  margin: auto;
+  border-radius: 9px;
+  margin-left: 33px;
+  overflow: hidden;
+}
+
+.welcomeSalamander img {
+  transition: all 800ms ease;
+}
+.welcomeSalamander img:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.panel {
+  width: 43%;
+  margin-top: 20px;
+  margin-left: auto;
+}
+.panel-block form {
+  width: 100%;
+}
+
+.panel-block {
+  padding: 12px 22px 21px 22px;
+}
+
+.panel-heading:not(:last-child) {
+  margin-bottom: 0.5em !important;
+}
+.help {
+  font-size: 0.85rem;
+}
+
+@media (max-width: 1000px) {
+  .panel {
+    width: 100%;
+  }
+}

@@ -1,0 +1,54 @@
+<link rel="stylesheet" href="static/css/footer.css" />
+<footer class="footer">
+  <div class="support">
+    <a href="#" class="title is-5">Zoo Map</a>
+    <a href="#" class="title is-5">Merchandise</a>
+    <a href="#" class="title is-5">Sponsors</a>
+  </div>
+  <div class="socials">
+    <div class="medias">
+      <img src="static/images/fb.png" />
+      <p>Facebook</p>
+    </div>
+    <div class="medias">
+      <img src="static/images/ins.png" />
+      <p>Instagram</p>
+    </div>
+    <div class="medias">
+      <img src="static/images/twit.png" />
+      <p>Twitter</p>
+    </div>
+    <div class="medias">
+      <img src="static/images/you.png" />
+      <p>Youtube</p>
+    </div>
+  </div>
+  <div class="infos">
+    <div class="openings">
+      <span id="opening">Timings</span>
+      <hr id="bottom" />
+      <ul>
+        <li>April 1st - October 31st 10:00am - 5:00pm</li>
+
+        <li>November 1st - March 31st 10:00am - 4:00pm</li>
+
+        <li>Open 7 days a week</li>
+
+        <li>Closed Thanksgiving & Christmas Day</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    const bottom = document.getElementById("bottom");
+    const span = document.getElementById("opening");
+    span.addEventListener("mouseenter", e => {
+      console.log(bottom.style.width);
+      if (bottom.style.width == "") bottom.style.width = "1%";
+      bottom.style.transform = "scaleX(1.1)";
+      console.log(bottom);
+    });
+    span.addEventListener("mouseleave", e => {
+      bottom.style.transform = "scaleX(0)";
+    });
+  </script>
+</footer>

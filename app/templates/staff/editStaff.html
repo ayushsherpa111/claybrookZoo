@@ -1,0 +1,54 @@
+{% extends 'staff/staffLayout.html' %} {% block content %} <link
+rel="stylesheet" href="{{url_for("static",filename="css/staff/editUser.css")}}">
+<div class="panel editUser">
+  <p class="panel-heading">
+    Edit User Info
+    <img
+      class="badge"
+      src="{{url_for('static',filename='images/edit.png')}}"
+      alt=""
+      srcset=""
+    />
+  </p>
+  <form action="" method="post" class="editForm">
+    {{form.csrf_token}}
+    <div class="field">
+      {{form.email.label(class="label")}}
+      <div class="control has-icons-left has-icons-right">
+        {{form.email(class="input",value=user.email)}}
+        <span class="icon is-small is-left">
+          <i class="fa fa-envelope"></i>
+        </span>
+      </div>
+      {% if form.email.errors %} {% for error in form.email.errors %}
+      <p class="help is-danger">{{error}}</p>
+      {% endfor %} {% endif %}
+    </div>
+    <div class="field">
+      {{form.username.label(class="label")}}
+      <div class="control has-icons-left has-icons-right">
+        {{form.username(class="input",value=user.username)}}
+        <span class="icon is-small is-left">
+          <i class="fa fa-envelope"></i>
+        </span>
+      </div>
+      {% if form.username.errors %} {% for error in form.username.errors %}
+      <p class="help is-danger">{{error}}</p>
+      {% endfor %} {% endif %}
+    </div>
+    <div class="field">
+      {{form.role.label(class="label",value=user.role)}}
+      <div class="select">
+        {{form.role(class="input")}}
+      </div>
+      {% if form.username.errors %} {% for error in form.username.errors %}
+      <p class="help is-danger">{{error}}</p>
+      {% endfor %} {% endif %}
+    </div>
+    <div class="field">
+      <button class="button is-danger is-outlined">Cancel</button>
+      {{form.submit(class="button is-link is-outlined")}}
+    </div>
+  </form>
+</div>
+{% endblock %}

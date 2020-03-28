@@ -1,0 +1,53 @@
+{%extends 'layout.html'%} {%block content%} {% include 'featured.html' %} <link
+rel="stylesheet" href="{{url_for("static",filename="css/animals.css")}}">
+<div class="container welcomeAnimals">
+  <h1 class="is-2">
+    Meet our animals
+  </h1>
+  <p class="subtitle">
+    Claybrook Zoo is home to a wide diversity of different animal species. From
+    small reptiles to large mammals you will find a world of fascinating
+    creatures at our zoo. Come meet the animals today!
+  </p>
+</div>
+
+<div class="categories">
+  <div style="overflow: hidden;">
+    <div class="animalCategory animal-1">
+      <h1>
+        Mammals
+      </h1>
+      <p>Loins, Tigers, Gorillas, Lemurs, Pandas and more...</p>
+      <button>See Animals</button>
+    </div>
+  </div>
+  <div style="overflow: hidden;">
+    <div class="animalCategory animal-2">
+      <h1>
+        Birds
+      </h1>
+      <p>Condor, Blue-throated macaw, Pelicans and more...</p>
+      <button>See Animals</button>
+    </div>
+  </div>
+  <div style="overflow: hidden;">
+    <div class="animalCategory animal-3">
+      <h1>
+        Reptiles and amphibians
+      </h1>
+      <p>Condor, Blue-throated macaw, Pelicans and more...</p>
+      <button>See Animals</button>
+    </div>
+  </div>
+  <div style="overflow: hidden;">
+    <div class="animalCategory animal-4">
+      <h1>
+        Fishes
+      </h1>
+      <p>Condor, Blue-throated macaw, Pelicans and more...</p>
+      <button>See Animals</button>
+    </div>
+  </div>
+</div>
+
+{%endblock%}

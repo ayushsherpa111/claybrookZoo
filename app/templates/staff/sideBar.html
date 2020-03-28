@@ -1,0 +1,51 @@
+<link rel="stylesheet" href="{{url_for('static',filename="css/staff/sidebar.css")}}" />
+<nav class="navbar">
+  <ul class="navbar-nav">
+    <li class="logo">
+      <a href="index" class="nav-link">
+        <span class="link-text logo-text">Claybrook</span>
+        <img src="{{url_for("static",filename="images/icon.png")}}" alt="" srcset="" />
+      </a>
+    </li>
+    <hr />
+
+    <li class="nav-item">
+      <a href="" class="nav-link">
+        <img src="{{url_for("static",filename="images/mew.png")}}" alt="" srcset="" />
+        <span class="link-text">Animals</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a href="#" class="nav-link">
+        <img src="{{url_for("static",filename="images/dolla.png")}}" alt="" srcset="" />
+        <span class="link-text">Sponsors</span>
+      </a>
+    </li>
+
+    <li class="nav-item">
+      <a href="#" class="nav-link">
+        <img src="{{url_for("static",filename="images/profile.png")}}" alt="" srcset="" />
+        <span class="link-text">Profile</span>
+      </a>
+    </li>
+
+    {% if session.get('role',None) and session.get('role') == "Admin" %}
+    <li class="nav-item">
+      <a href="evaluate" class="nav-link">
+        <img src="{{url_for("static",filename="images/newUser.png")}}" />
+        {% if newUsers and newUsers > 0 %}
+        <div class="smallnotif"></div>
+        {% endif %}
+        <span class="link-text">New Members </span>
+      </a>
+    </li>
+    {% endif %}
+    <li class="nav-item" id="themeButton">
+      <a class="nav-link" href="logout">
+        <img src="{{url_for("static",filename="images/power.png")}}" class="power" />
+        <span class="link-text">Log off</span>
+      </a>
+    </li>
+  </ul>
+</nav>

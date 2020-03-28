@@ -1,0 +1,103 @@
+.main {
+  margin-left: 5rem;
+  padding-left: 5px;
+  padding-top: 5px;
+}
+.stats {
+  margin-left: 1rem;
+  padding: 0.2rem;
+  margin-top: 22px;
+  width: 98%;
+  display: flex;
+  overflow-x: auto;
+  /* justify-content: space-evenly; */
+  margin-bottom: 1.1rem;
+  overflow-y: hidden;
+
+  height: 7.5rem;
+}
+
+.stats > * {
+  margin-right: 0.5rem;
+}
+
+.stats::-webkit-scrollbar {
+  height: 0.5rem;
+}
+.stats::-webkit-scrollbar-track {
+  background-color: #7576f8;
+  border-radius: 25px;
+}
+
+.infoCard {
+  padding: 0.8rem;
+  background-color: var(--elemColor);
+  display: flex;
+  width: 13rem;
+  height: fit-content;
+  border-radius: 10px;
+  transition: all 400ms ease;
+  justify-content: space-between;
+}
+
+.ico {
+  width: 4rem;
+  height: 4rem;
+  padding: 12px;
+  margin-left: 2rem;
+  border-radius: 50%;
+  background-color: var(--bgColor);
+}
+
+.infoCard:hover {
+  box-shadow: 0px 2px 11px #37439f87;
+  cursor: pointer;
+  transform: scale(1.05);
+}
+.stats:last-child {
+  margin-right: 2rem;
+}
+.infoCard:active {
+  transform: scale(0.99999);
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.ico img {
+  filter: invert(1);
+}
+
+.info p:first-child {
+  font-size: 1.5rem;
+}
+
+.lastAdded {
+  width: 50%;
+  margin-left: 20px;
+  margin-bottom: 2rem;
+}
+
+.panel-heading {
+  background-color: var(--elemColor);
+  color: white;
+}
+
+@media (max-width: 1400px) {
+  .infoCard {
+    margin-right: 1.1rem;
+  }
+  .infoCard:last-child {
+    margin: 0;
+  }
+}
+
+@media (min-width: 1500px) {
+  .stats {
+    overflow-x: auto;
+    justify-content: space-between;
+  }
+}

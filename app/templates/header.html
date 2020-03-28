@@ -1,44 +1,52 @@
 <link rel="stylesheet" href="static/css/head.css">
+<script defer src="static/js/head.js"></script>
+<div class="toggle">
+  <a role="button" id="togBtn" class="navbar-burger" aria-label="menu" aria-expanded="false">
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+    <span aria-hidden="true"></span>
+  </a>
+</div>
 <nav class="navbar" role="navigation">
-  <div class="navbar-brand">
-    <a class="navbar-item" href="">
-      <img
-        src="static/images/download.png"
-        width="112"
-        height="28"
-      />
-    </a>
-  </div>
-  <div id="navbarBasicExample" class="navbar-menu">
+  <div id="navbarBasicExample" class="navbar-menu container" style="padding-bottom: 0 !important;">
     <div class="navbar-start">
       <a class="navbar-item" href="/">
         Home
       </a>
-
-      <a class="navbar-item" href="register">
-        Register
+      <a class="navbar-item" href="tickets">
+        Tickets
       </a>
+      <a class="navbar-item" href="register">
+        Sponsor
+      </a>
+      <a class="navbar-item" href="map">
+        Map
+      </a>
+      <a class="navbar-item" href="about">
+        About Us
+      </a>
+      <a class="navbar-item" href="contact">
+        Contact
+      </a>
+    </div>
+    <div class="navbar-end">
+      <p class="control has-icons-left searchInp" >
+        <input class="input" type="email" placeholder="Search Your Favorite Animal">
+        <span class="icon is-small is-left">
+          <i class="fa fa-search"></i>
+        </span>
+      </p>
 
-      <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-
-        <div class="navbar-dropdown">
-          <a class="navbar-item">
-            About
-          </a>
-          <a class="navbar-item">
-            Jobs
-          </a>
-          <a class="navbar-item">
-            Contact
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item">
-            Report an issue
-          </a>
+      <div class="events">
+        <div class="count">
+          <span>{{notification}}</span>
         </div>
+        <img src="{{url_for('static',filename="images/bell.png")}}" class="bell" alt="" srcset="">
       </div>
+      {% if session.get('role',None) != None and session.get('role',None) != "Sponsor" %}
+      <a class="logout" href="logout">
+        <img src="static/images/power.png" alt="">
+      </a>
+      {% endif %}
     </div>
 </nav>
