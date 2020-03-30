@@ -1,4 +1,4 @@
-from models.animals import Animal
+from app.models.animals import Animal
 
 class Birds(Animal):
   def __init__(self, *args,**kwargs):

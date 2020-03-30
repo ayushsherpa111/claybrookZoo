@@ -31,7 +31,7 @@
 }
 .utils {
   display: flex;
-  height: 36rem;
+  height: 100%;
   background-color: #313a6e;
   padding: 2rem;
   border-radius: 8px;
@@ -59,6 +59,12 @@
   border-radius: 13px;
   box-shadow: 0 0 20px #050e4b99;
 }
+
+#pie {
+  width: 350px;
+  height: 350px;
+}
+
 .modal-content {
   background-color: white !important;
   text-align: center;
@@ -84,9 +90,9 @@
   border-radius: 50%;
   height: 8rem;
   background-color: #5954b0;
-  background-image: url("../../images/birds/bird.png");
-  background-position: 1.1rem;
+  background-position: center;
   transition: all 500ms ease;
+  background-size: 4.5rem;
 }
 .animal h1 {
   align-items: center;
@@ -96,5 +102,41 @@
 
 .animal:hover {
   cursor: pointer;
-  transform: scale(1.1);
+  background-size: 5rem;
+}
+
+@media (max-width: 1410px) {
+  .modal-content {
+    width: 48rem;
+  }
+  .button {
+    padding-left: 0.7em;
+    padding-right: 0.7em;
+  }
+  .button img{
+    height: 2.2rem;
+    width: 2.2rem;
+  }
+  .options {
+    margin-right: 0.5rem;
+  }
+  .animal h1 {
+    font-size: 1.2rem;
+  }
+  canvas {
+    width: 359px !important;
+    height: 230px !important;
+  }
+}
+
+@media (min-width: 1500px) {
+  .modal-content {
+    width: 55rem;
+  }
+  .options {
+    margin-right: 1rem;
+  }
+  .animal h1 {
+    font-size: 1.2rem;
+  }
 }

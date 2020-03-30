@@ -3,11 +3,7 @@
   rel="stylesheet"
   href="{{url_for('static',filename='css/staff/animals.css')}}"
 />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
-<script
-  defer
-  src="{{url_for('static',filename='js/staff/animals.js')}}"
-></script>
+
 <div class="animalManagement">
   <h1 class="title is-3">
     Animal Management
@@ -29,40 +25,48 @@
       <a class="button">
         <img src="{{url_for('static',filename='images/events.png')}}" alt="" />
         <p>Events</p>
+        <a class="button">
+          <img src="{{url_for('static',filename='images/dolla.png')}}" alt="" />
+        <p>Sponsor</p>
       </a>
     </div>
 
     <div class="dynamicContent">
-      {% block dynamic%}
+      {% if addForm == False %}
       <div class="pie">
         <canvas id="pie" width="350px" height="250px"></canvas>
       </div>
-      {% endblock dynamic%}
+      {% else %} {%include 'staff/animalForm.html'%} {%endif%}
     </div>
   </div>
-  <div class="modal is-active">
+  <div class="modal">
     <div class="modal-background"></div>
     <div class="modal-content">
       <header class="modal-card-head">
         <p class="modal-card-title">Select Animal Category</p>
-        <button class="delete" aria-label="close" onclick="displayModal()"></button>
+        <button
+          class="delete"
+          aria-label="close"
+          onclick="displayModal()"
+        ></button>
       </header>
       <div class="categories">
-        <div class="animal">
-          <h1>Bird</h1>
+        {% for category in categories %}
+        <div
+          class="animal"
+          style="background-image: url(/static/images/{{category['profile']}});"
+          onclick="addAnimal('{{category['category']}}')"
+        >
+          <h1>{{category['category']}}</h1>
         </div>
-        <div class="animal">
-          <h1>Mammal</h1>
-        </div>
-        <div class="animal">
-          <h1>Reptile</h1>
-        </div>
-        <div class="animal">
-          <h1>Amphibian</h1>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>
 </div>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+<script
+  defer
+  src="{{url_for('static',filename='js/staff/animals.js')}}"
+></script>
 {% endblock %}

@@ -1,0 +1,37 @@
+<div class="field">
+  {{form.gestationa_period.label(class="label")}}
+  <div class="control">
+    {{form.gestationa_period(class="input",type="number",placeholder="Animals\
+    Gestational Period [ IN MONTHS ]...")}}
+  </div>
+  {% if form.gestationa_period.errors %}
+    {% for error in form.gestationa_period.errors %}
+      <p class="help is-danger">{{error}}</p>
+    {% endfor %}
+  {% endif %}
+</div>
+
+<div class="field">
+  {{form.category.label(class="label")}}
+  <div class="control">
+    {{form.category(class="input",placeholder="Mammal Classification")}}
+  </div>
+  {% if form.category.errors %}
+    {% for error in form.category.errors %}
+      <p class="help is-danger">{{error}}</p>
+    {% endfor %}
+  {% endif %}
+</div>
+
+<div class="field">
+  {{form.average_body_temp.label(class="label")}}
+  <div class="control">
+    {{form.average_body_temp(class="input",type="number",placeholder="Average Body Temperature\
+    in °C")}}
+  </div>
+  {% if form.average_body_temp.errors %}
+    {% for error in form.average_body_temp.errors %}
+      <p class="help is-danger">{{error}}</p>
+    {% endfor %}
+  {% endif %}
+</div>

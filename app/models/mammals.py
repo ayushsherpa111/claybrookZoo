@@ -7,7 +7,8 @@ class Mammals(Animal):
 
   def getDiet(self):
     return f"This animal eats {' and'.join(self.diet)}"
-  
+
+
   def __repr__(self):
     return super().__repr__(
       [str(key)+str(val) for key,val in [*zip([*self.__dict__.keys()],[*self.__dict__.values()])] ]

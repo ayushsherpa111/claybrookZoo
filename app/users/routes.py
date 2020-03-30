@@ -3,14 +3,31 @@ from markupsafe import escape
 from flask import Blueprint, render_template, session, url_for,redirect,flash,request,abort
 from functools import wraps
 import json
-from app.users.forms import LoginForm,RegistrationForm,StaffForm
-from app.users.helper import Helper,checkSession,assignRole,setSession
-from app.db.claybrookZoo import users
+from app.users.forms import LoginForm,RegistrationForm,StaffForm,getAnimalForm,MammalForm
+from app.users.helper import Helper,checkSession,assignRole,setSession,getAnimal,InsertAnimal
+from app.db.claybrookZoo import users,categories,compound,aquarium,hothouse,aviary
 from app import bcrypt
 from app.models.user import User
+from app.models.mammals import Mammals
+from app.models.birds import Birds
+from app.models.category import Category
+import secrets
+import os
+from app import app
 
 userDB = Helper(users)
+insertAnimal = InsertAnimal({'mammals':Helper(compound),'birds':Helper(aviary),'reptiles':Helper(hothouse),'amphibians':Helper(hothouse),'fishes':Helper(aquarium)})
 user = Blueprint('user',__name__)
+
+
+def uploadImage(image_data,animalType):
+  random_hex = secrets.token_hex(16)
+  _, fext = os.path.splitext(image_data.filename)
+  newFilename = random_hex + fext
+  picture_path = os.path.join(app.root_path,'static','images',animalType,newFilename)
+  image_data.save(picture_path)
+  return newFilename
+
 
 @user.route("/login",methods=["GET","POST"])
 def loginUser():
@@ -52,7 +69,6 @@ def register():
 def logout():
   if request.method == "GET":
     if "current_user" in session:
-      print(session)
       session.pop('current_user',None)
       flash("You have now been logged out","notification is-danger")
       return redirect(url_for('home.index'))
@@ -69,10 +85,28 @@ def staffHome():
     return redirect(url_for("home.index"))
 
 @user.route("/staff/animals",methods=["GET","POST"])
-def animalOperation():
+@user.route("/staff/animals/<string:category>",methods=["GET","POST"])
+def animalOperation(category=None):
+  print(app.root_path)
   if checkSession(session,["Admin","Manager","Staff"]):
+    form = getAnimalForm(category)
+    print(form)
+    cats = Category.get_all()
+    addForm = True
     if request.method == "GET":
-      return render_template("staff/animals.html",profile="profile.png")
+      if category == None:
+        form = None
+        addForm = False
+      else:
+        addForm = True
+    if form.validate_on_submit():
+      imagePath = uploadImage(form.image.data,category)
+      print(form.__dict__)
+      newAnimal = getAnimal(form.__dict__['_fields'],category)
+      newAnimal.update({'image':[imagePath]})
+      if insertAnimal.insert_animal(newAnimal.__dict__,category):
+        return redirect(url_for("staff."))
+    return render_template("staff/animals.html",profile="profile.png",categories=cats,addForm=addForm,category=category,form=form)
   else:
     return redirect(url_for("animals.zooAnimals"))
 

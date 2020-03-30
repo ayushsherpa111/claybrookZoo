@@ -3,6 +3,9 @@ from app import app
 from datetime import datetime
 from app import bcrypt
 from app.models.roles import Sponsor, Visitor, Manager,Staff
+from app.models.mammals import Mammals
+from app.models.birds import Birds
+from pprint import pprint
 
 class Helper:
   def __init__(self,db):
@@ -12,8 +15,8 @@ class Helper:
     return self.db.find({'role':{'$ne':'Admin'},'checked':'False'})
   
   def find_by_username(self,username):
-    username = self.escapeEverything(username)
-    return self.db.find({'username':username})
+    user = self.escapeEverything(username)
+    return self.db.find({'username':user})
   
   def find_by_email(self,email):
     email = self.escapeEverything(email)
@@ -26,6 +29,15 @@ class Helper:
       if bcrypt.check_password_hash(found["password"],userDict["password"]):
         return found
     return None
+
+  def insert_record(self,obj):
+    _sanitized = self.escapeEverything(obj)
+    try:
+      self.db.insert_one(_sanitized)
+      return True
+    except Exception as e:
+      return e
+
 
   def find_and_update(self,option,setVal):
     setVal = self.escapeEverything(setVal)
@@ -77,3 +89,24 @@ def setSession(session,userInstance):
   }
   session['current_user'] = dct
 
+
+def getAnimal(form_data,animal):
+  animalDct = {}
+  for key,value in form_data.items():
+    if key != "image" and key != "csrf_token":
+      animalDct.update({key:value.data})
+  new_life_span = str(animalDct['lifespan']) + animalDct.pop('spanType')
+  animalDct.update({'lifespan':new_life_span})
+  print(animalDct)
+  if animal.lower() == "mammals":
+    return Mammals(animalDct,{})
+  if animal.lower() == "birds":
+    return Birds(animalDct,{})
+
+class InsertAnimal:
+  def __init__(self,animal_dbs):
+    self.dbs = animal_dbs
+  
+  def insert_animal(self,animal,animType):
+    animType = animType.lower()
+    return self.dbs.get(animType,None).insert_record(animal)

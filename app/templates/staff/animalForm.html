@@ -1,0 +1,177 @@
+<link rel="stylesheet" href="/static/css/staff/animalForm.css" />
+<form action="" method="POST" class="formDiv" enctype="multipart/form-data">
+  <div class="formBlock">
+    <div class="field">
+      {{form.hidden_tag()}}
+      {{form.species.label(class="label")}}
+      <div class="control">
+        {{form.species(class="input",placeholder="Enter Species Name...")}}
+      </div>
+      {% if form.species.errors %}
+        {% for error in form.species.errors %}
+          <p class="help is-danger">{{error}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="field">
+      {{form.animal_name.label(class="label")}}
+      <div class="control">
+        {{form.animal_name(class="input",placeholder="Animal's Name")}}
+      </div>
+      {% if form.animal_name.errors %}
+        {% for error in form.animal_name.errors %}
+          <p class="help is-danger">{{error}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="field">
+      {{form.date_of_birth.label(class="label")}}
+      <div class="control">
+        {{form.date_of_birth(class="input",type="date")}}
+      </div>
+      {% if form.date_of_birth.errors %}
+        {% for error in form.date_of_birth.errors %}
+          <p class="help is-danger">{{error}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="field">
+      {{form.gender.label(class="label")}}
+      <div class="control">
+        {{form.gender(style="display:flex;")}}
+      </div>
+      {% if form.gender.errors %}
+        {% for error in form.gender.errors %}
+          <p class="help is-danger">{{error}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="field">
+      {{form.lifespan.label(class="label")}}
+      <div class="control lifespan">
+        {{form.lifespan(class="input",type="number",placeholder="Average\
+        Lifespan...")}}
+        <div class="select">
+          {{form.spanType()}}
+        </div>
+      </div>
+      {% if form.lifespan.errors %}
+        {% for error in form.lifespan.errors %}
+          <p class="help is-danger">{{error}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="field">
+      {{form.diet.label(class="label")}}
+      <div class="control">
+        {{form.diet(class="textarea",placeholder="Animals Dietary\
+        Requirements...")}}
+      </div>
+      {% if form.diet.errors %}
+        {% for error in form.diet.errors %}
+        <p class="help is-danger">{{error}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="field">
+      {{form.habitat.label(class="label")}}
+      <div class="control">
+        {{form.habitat(class="textarea",placeholder="Animals Natural Habitat\
+        Description...")}}
+      </div>
+    </div>
+    {% if form.habitat.errors %}
+      {% for error in form.habitat.errors %}
+      <p class="help is-danger">{{error}}</p>
+      {% endfor %}
+    {% endif %}
+  </div>
+
+  <div class="formBlock">
+    <div class="field">
+      {{form.global_population.label(class="label")}}
+      <div class="control">
+        {{form.global_population(class="input",type="number",placeholder="Animals\
+        Global Population Distribution...")}}
+      </div>
+      {% if form.global_population.errors %}
+        {% for error in form.global_population.errors %}
+        <p class="help is-danger">{{error}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="lifespan">
+      <div class="field">
+        {{form.height.label(class="label")}}
+        <div class="control">
+          {{form.height(class="input",type="number",placeholder="Animals Height\
+          in CM")}}
+        </div>
+        {% if form.height.errors %}
+          {% for error in form.height.errors %}
+          <p class="help is-danger">{{error}}</p>
+          {% endfor %}
+        {% endif %}
+      </div>
+      <div class="field">
+        {{form.weight.label(class="label")}}
+        <div class="control">
+          {{form.weight(class="input",type="number",placeholder="Animals Weight\
+          in KG")}}
+        </div>
+        {% if form.weight.errors %}
+          {% for errors in form.weight.errors %}
+          <p class="help is-danger">{{errors}}</p>
+          {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+
+    {% if category == "Mammals" %} {% include 'staff/mammalForm.html' %} {% elif
+    category == "Birds" %} {% include 'staff/birdForm.html' %} {%endif%}
+
+    <div class="field">
+      <div class="file is-primary has-name is-boxed">
+        <label class="file-label">
+          {{form.image(class="file-input",accept=".jpg,.jpeg,.png")}}
+          <span class="file-cta">
+            <span class="file-icon">
+              <img
+                src="{{url_for('static',filename='images/img.png')}}"
+                alt=""
+              />
+            </span>
+            <span class="file-label">
+              Choose an Image file…
+            </span>
+          </span>
+          <span class="file-name">
+            No Image File Selected
+          </span>
+        </label>
+      </div>
+      {% if form.image.errors %}
+        {% for error in form.image.errors %}
+        <p class="help is-danger">{{error}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="field is-grouped ">
+      <div class="control">
+        <button class="button is-success wide">Submit</button>
+      </div>
+      <div class="control">
+        <button class="button is-danger is-light wide">Cancel</button>
+      </div>
+    </div>
+  </div>
+</form>
+<script src="{{url_for('static',filename='js/staff/animalForm.js')}}"></script>

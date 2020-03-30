@@ -5,6 +5,9 @@ class Animal:
     animalArgs.update(kwargs)
     self.__dict__.update(animalArgs)
 
+  def update(self,val):
+    self.__dict__.update(val)
+
   def get(self):
     print(self)
     return vars(self)

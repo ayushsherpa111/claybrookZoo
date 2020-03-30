@@ -7,7 +7,7 @@ aviary = db.Aviary
 compound = db.Compounds
 aquarium = db.Aquarium
 hothouse = db.Hothouse
-
+categories = db.Categories
 users = db.Users
 
 

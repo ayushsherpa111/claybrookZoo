@@ -1,0 +1,84 @@
+.field .label {
+  color: white;
+}
+.formDiv {
+  width: 100%;
+  margin-left: 9rem;
+  display: flex;
+}
+.formDiv form {
+  display: flex;
+}
+.wide {
+  border-radius: 8px;
+  height: 3rem;
+  width: 6rem;
+}
+.field .control .checkbox:hover {
+  font-weight: 500;
+  color: white;
+}
+
+.field .control .checkbox:hover a {
+  font-weight: 500;
+  color: #3273dc;
+}
+ul li {
+  margin-right: 0.5rem;
+}
+.lifespan {
+  display: flex;
+  justify-content: space-between;
+}
+.lifespan input {
+  margin-right: 1rem;
+}
+
+.formBlock {
+  display: flex;
+  flex-direction: column;
+  width: 48%;
+}
+.formBlock:first-child {
+  margin-right: 1rem;
+}
+.dynamicContent {
+  width: 100%;
+  margin-left: 1.5rem;
+}
+.file {
+  justify-content: center;
+}
+.file-icon img {
+  filter: invert(1);
+}
+.field.is-grouped {
+  justify-content: flex-end;
+}
+.button.is-success {
+  background-color: #444c8d;
+}
+
+.button.is-danger.is-light:hover {
+  background-color: #f14668;
+  color: white;
+}
+.file-cta,
+.file-name {
+  max-width: 22rem;
+}
+
+@media (max-width: 1400px) {
+  .formDiv {
+    margin-left: 1rem;
+  }
+}
+
+@media (min-width: 1500px) {
+  .formDiv {
+    margin-left: 1.1rem;
+  }
+  .options {
+    width: 12rem;
+  }
+}
