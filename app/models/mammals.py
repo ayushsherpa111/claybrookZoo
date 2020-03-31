@@ -3,6 +3,7 @@ from app.models.animals import Animal
 class Mammals(Animal):
   def __init__(self, *args,**kwargs):
     super().__init__(args[0])
+    self.location = "Compound"
     self.__dict__.update(args[1])
 
   def getDiet(self):

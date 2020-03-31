@@ -134,8 +134,13 @@
       </div>
     </div>
 
-    {% if category == "Mammals" %} {% include 'staff/mammalForm.html' %} {% elif
-    category == "Birds" %} {% include 'staff/birdForm.html' %} {%endif%}
+    {% if category == "Mammals" %} 
+      {% include 'staff/mammalForm.html' %} 
+    {% elif category == "Birds" %} 
+      {% include 'staff/birdForm.html' %} 
+    {% elif category == "Reptiles" or category == "Amphibians" %}
+      {% include 'staff/reptileAndAmp.html' %}
+    {%endif%}
 
     <div class="field">
       <div class="file is-primary has-name is-boxed">

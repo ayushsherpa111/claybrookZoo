@@ -12,6 +12,9 @@ class Animal:
     print(self)
     return vars(self)
 
+  def addSponsor(self,sponsor):
+    self.sponsor = sponsor
+
   @classmethod
   def fromDict(cls,inst,animDict):
     if "_id" in animDict:

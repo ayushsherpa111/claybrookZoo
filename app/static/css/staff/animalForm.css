@@ -67,7 +67,9 @@ ul li {
 .file-name {
   max-width: 22rem;
 }
-
+strong{
+  color: white !important;
+}
 @media (max-width: 1400px) {
   .formDiv {
     margin-left: 1rem;

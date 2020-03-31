@@ -3,6 +3,7 @@ from markupsafe import escape
 from flask import Blueprint, render_template, session, url_for,redirect,flash,request,abort
 from functools import wraps
 import json
+from datetime import datetime
 from app.users.forms import LoginForm,RegistrationForm,StaffForm,getAnimalForm,MammalForm
 from app.users.helper import Helper,checkSession,assignRole,setSession,getAnimal,InsertAnimal
 from app.db.claybrookZoo import users,categories,compound,aquarium,hothouse,aviary
@@ -80,7 +81,8 @@ def logout():
 @user.route("/staff",methods=["GET"])
 def staffHome():
   if checkSession(session,["Admin","Manager","Staff"]):
-    return render_template('staff/staff.html',total=randint(1,100),newUsers=userDB.get_new_users())
+    latest = insertAnimal.getLastAdded()
+    return render_template('staff/staff.html',total=randint(1,100),newUsers=userDB.get_new_users(),latest=latest)
   else:
     return redirect(url_for("home.index"))
 
@@ -89,8 +91,7 @@ def staffHome():
 def animalOperation(category=None):
   print(app.root_path)
   if checkSession(session,["Admin","Manager","Staff"]):
-    form = getAnimalForm(category)
-    print(form)
+    form = getAnimalForm(category) if category != None else None
     cats = Category.get_all()
     addForm = True
     if request.method == "GET":
@@ -99,13 +100,12 @@ def animalOperation(category=None):
         addForm = False
       else:
         addForm = True
-    if form.validate_on_submit():
+    if form and form.validate_on_submit():
       imagePath = uploadImage(form.image.data,category)
-      print(form.__dict__)
       newAnimal = getAnimal(form.__dict__['_fields'],category)
-      newAnimal.update({'image':[imagePath]})
-      if insertAnimal.insert_animal(newAnimal.__dict__,category):
-        return redirect(url_for("staff."))
+      newAnimal.update({'image':[imagePath],"dateAdded":datetime.utcnow()})
+      insertAnimal.insert_animal(newAnimal.__dict__,category)
+      return redirect(url_for("user.staffHome"))
     return render_template("staff/animals.html",profile="profile.png",categories=cats,addForm=addForm,category=category,form=form)
   else:
     return redirect(url_for("animals.zooAnimals"))

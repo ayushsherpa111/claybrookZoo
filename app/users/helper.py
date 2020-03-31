@@ -1,9 +1,11 @@
 from markupsafe import escape
+from pymongo import ASCENDING
 from app import app
-from datetime import datetime
+from datetime import datetime,time,timedelta
 from app import bcrypt
 from app.models.roles import Sponsor, Visitor, Manager,Staff
 from app.models.mammals import Mammals
+from app.models.reptsAndAmph import ReptileAndAmphForm
 from app.models.birds import Birds
 from pprint import pprint
 
@@ -33,11 +35,17 @@ class Helper:
   def insert_record(self,obj):
     _sanitized = self.escapeEverything(obj)
     try:
-      self.db.insert_one(_sanitized)
-      return True
+      return self.db.insert_one(_sanitized).inserted_id
     except Exception as e:
+      print(e)
       return e
 
+  def sortBy(self,field,order,lim,prev):
+    data = []
+    prevDate = datetime.utcnow() - timedelta(prev)
+    for i in self.db.find({"dateAdded":{"$lte":datetime.utcnow(),"$gt":prevDate}},{"animal_name":1,"species":1,"category":1,"dateAdded":1,"location":1,"_id":0},limit=lim).sort([(field,order)]):
+      data.append(i)
+    return data
 
   def find_and_update(self,option,setVal):
     setVal = self.escapeEverything(setVal)
@@ -56,8 +64,10 @@ class Helper:
   def escapeEverything(self,data):
     if isinstance(data,dict):
       for key in data:
-        newVal = escape(data[key])
-        data.update({key:newVal})
+        if key != "date_of_birth" and key != "image" and key != "dateAdded":
+          if isinstance(data[key],str):
+            newVal = escape(data[key])
+            data.update({key:newVal})
     elif isinstance(data,str):
       data = escape(data)
     return data
@@ -97,16 +107,29 @@ def getAnimal(form_data,animal):
       animalDct.update({key:value.data})
   new_life_span = str(animalDct['lifespan']) + animalDct.pop('spanType')
   animalDct.update({'lifespan':new_life_span})
+  print(type(animalDct['date_of_birth']))
+  newDOB = datetime.combine(animalDct['date_of_birth'],time())
+  animalDct.update({'date_of_birth':newDOB})
   print(animalDct)
   if animal.lower() == "mammals":
     return Mammals(animalDct,{})
   if animal.lower() == "birds":
     return Birds(animalDct,{})
+  if animal.lower() == "reptiles" or animal.lower() == "amphibians":
+    return ReptileAndAmphForm(animalDct,{})
 
 class InsertAnimal:
   def __init__(self,animal_dbs):
     self.dbs = animal_dbs
   
-  def insert_animal(self,animal,animType):
+  def insert_animal(self,animalRec,animType):
     animType = animType.lower()
-    return self.dbs.get(animType,None).insert_record(animal)
+    return self.dbs.get(animType,None).insert_record(animalRec)
+
+  def getLastAdded(self):
+    latest = []
+    for animal in self.dbs.values():
+      collectedArr = animal.sortBy('dateAdded',ASCENDING,10,1)
+      if len(collectedArr) > 0:
+        latest+=collectedArr
+    return latest

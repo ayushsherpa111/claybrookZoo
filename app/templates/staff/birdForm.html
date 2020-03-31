@@ -1,22 +1,43 @@
 <div class="field">
+  {{form.nest_construction.label(class="label")}}
+  <div class="control">
+    {{form.nest_construction(class="input",placeholder="Nest Construction Method")}}
+  </div>
+  {% if form.nest_construction.errors %}
+    {% for error in form.nest_construction.errors %}
+      <p class="help is-danger">{{error}}</p>
+    {% endfor %}
+  {% endif %}
+</div>
+
+<div class="field">
   {{form.clutch_size.label(class="label")}}
   <div class="control">
-    {{form.clutch_size(class="input",placeholder="Mammal Classification")}}
+    {{form.clutch_size(class="input",type="number",placeholder="Bird Clutch Size...")}}
   </div>
+  {% if form.clutch_size.errors %}
+    {% for error in form.clutch_size.errors %}
+      <p class="help is-danger">{{error}}</p>
+    {% endfor %}
+  {% endif %}
 </div>
 
 <div class="field">
   {{form.wing_span.label(class="label")}}
   <div class="control">
-    {{form.wing_span(class="input",placeholder="Average Body Temperature in\
-    °C")}}
+    {{form.wing_span(class="input",type="number",placeholder="Wind span in inches")}}
   </div>
+  {% if form.wing_span.errors %}
+    {% for error in form.wing_span.errors %}
+      <p class="help is-danger">{{error}}</p>
+    {% endfor %}
+  {% endif %}
 </div>
 
 <div class="field">
   <div class="control">
     <label class="checkbox">
-      {{form.fly()}} Can fly?
+      {{form.fly()}} <strong>Can fly?</strong>
     </label>
   </div>
 </div>
@@ -24,6 +45,11 @@
 <div class="field">
   {{form.plumage.label(class="label")}}
   <div class="control">
-    {{form.plumage(class="input",placeholder="Average Body Temperature in °C")}}
+    {{form.plumage(class="input",placeholder="Plumage variants...")}}
   </div>
+  {% if form.plumage.errors %}
+    {% for error in form.plumage.errors %}
+      <p class="help is-danger">{{error}}</p>
+    {% endfor %}
+  {% endif %}
 </div>

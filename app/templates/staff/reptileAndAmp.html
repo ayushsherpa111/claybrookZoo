@@ -1,0 +1,35 @@
+<div class="field">
+  {{form.reproduction_type.label(class="label")}}
+  <div class="control">
+    {{form.reproduction_type(class="input",placeholder="Reproduction type...")}}
+  </div>
+  {% if form.reproduction_type.errors %}
+    {% for error in form.reproduction_type.errors %}
+      <p class="help is-danger">{{error}}</p>
+    {% endfor %}
+  {% endif %}
+</div>
+
+<div class="field">
+  {{form.average_clutch_size.label(class="label")}}
+  <div class="control">
+    {{form.average_clutch_size(class="input",type="number",placeholder="Bird Clutch Size...")}}
+  </div>
+  {% if form.average_clutch_size.errors %}
+    {% for error in form.average_clutch_size.errors %}
+      <p class="help is-danger">{{error}}</p>
+    {% endfor %}
+  {% endif %}
+</div>
+
+<div class="field">
+  {{form.average_offspring_number.label(class="label")}}
+  <div class="control">
+    {{form.average_offspring_number(class="input",type="number",placeholder="Wind span in inches")}}
+  </div>
+  {% if form.average_offspring_number.errors %}
+    {% for error in form.average_offspring_number.errors %}
+      <p class="help is-danger">{{error}}</p>
+    {% endfor %}
+  {% endif %}
+</div>

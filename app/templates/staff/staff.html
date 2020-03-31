@@ -62,13 +62,37 @@
       Last Added
     </p>
     <table class="table is-fullwidth">
-      <tr>
+      <thead>
+        <tr>
         <th>Name</th>
         <th>Species</th>
         <th>Classification</th>
         <th>Date Added</th>
         <th>Location</th>
       </tr>
+    </thead>
+    <tbody>
+      <!-- "animal_name":1,"species":1,"dateAdded":1,"location" -->
+      {% for animal in latest %}
+        <tr>
+          <td>
+            {{animal['animal_name']}}
+          </td>
+          <td>
+            {{animal['species']}}
+          </td>
+          <td>
+            {{animal['category']}}
+          </td>
+          <td>
+            {{animal['dateAdded']}}
+          </td>
+          <td>
+            {{animal['location']}}
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
     </table>
   </div>
 </div>

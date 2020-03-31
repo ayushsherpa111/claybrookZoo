@@ -59,8 +59,8 @@ class AnimalForm(FlaskForm):
   gender = RadioField("Gender",choices=[('M',"Male"),('F',"Female")],validators=[DataRequired()])
   lifespan = IntegerField("Lifespan",validators=[DataRequired(),NumberRange(min=1)])
   spanType = SelectField("Lifespan",choices=[('Months',"Months"),('Years',"Years")])
-  diet = TextAreaField("Dietary Requirements",validators=[DataRequired(),Regexp("^[a-zA-Z0-9\s]*$",flags=re.M)])
-  habitat = TextAreaField("Natural Habitat Description",validators=[DataRequired(),Regexp("^[a-zA-Z0-9\s]*$",flags=re.M)])
+  diet = TextAreaField("Dietary Requirements",validators=[DataRequired()])
+  habitat = TextAreaField("Natural Habitat Description",validators=[DataRequired()])
   global_population = IntegerField("Global Population Distribution",validators=[DataRequired(),NumberRange(min=1)])
   height = IntegerField("Height in CM",validators=[DataRequired(),NumberRange(min=1)])
   weight = IntegerField("Weight in KG",validators=[DataRequired(),NumberRange(min=1)])
@@ -75,10 +75,15 @@ class MammalForm(AnimalForm):
 
 class BirdForm(AnimalForm):
   nest_construction = StringField("Nest Construction method",validators=[DataRequired()])
-  clutch_size = IntegerField("Bird Clutch Size in inches",validators=[DataRequired()])
-  wing_span = IntegerField("Wing span in inches",validators=[DataRequired()])
+  clutch_size = IntegerField("Bird Clutch Size in inches",validators=[DataRequired(),NumberRange(min=1)])
+  wing_span = IntegerField("Wing span in inches",validators=[DataRequired(),NumberRange(min=1)])
   fly = BooleanField("Can fly?")
   plumage = StringField("Plumage color variants",validators=[DataRequired()])
+
+class ReptileAndAmphForm(AnimalForm):
+  reproduction_type = StringField('Reproduction type',validators=[DataRequired()])
+  average_clutch_size = IntegerField("Average clutch size",validators=[DataRequired(),NumberRange(min=1)])
+  average_offspring_number = IntegerField("Average offspring",validators=[DataRequired(),NumberRange(min=1)])
 
 
 def getAnimalForm(animal):

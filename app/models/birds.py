@@ -3,6 +3,7 @@ from app.models.animals import Animal
 class Birds(Animal):
   def __init__(self, *args,**kwargs):
     super().__init__(args[0])
+    self.location = "Aviary"
     self.__dict__.update(args[1])
 
   def __repr__(self):
