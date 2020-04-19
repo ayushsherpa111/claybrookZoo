@@ -1,0 +1,41 @@
+{% extends 'staff/staffLayout.html'%}
+{% block content %}
+<style>
+  .log{
+    margin: 1rem 0;
+  }
+  .bar h1{
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+  }
+  .logData{
+    background-color: white;
+    color: black;
+    padding: 1rem;
+  }
+  .bar{
+    margin-bottom: 1rem;    
+  }
+</style>
+<div class="log">
+  {% for i in log %}
+    <div class="bar">
+      <h1>{{i}}</h1>
+    </div>
+    {% for act in log[i] %}
+      <div class="logData">
+        <div>
+          <span>Action: </span>
+          <p>{{act['operation']}}</p>
+        </div>
+        <div>
+          <span>Action: </span>
+          <p>{{act['operation']}}</p>
+        </div>
+      </div>
+    {% endfor %}
+  {% endfor %}
+</div>
+
+{% endblock %}

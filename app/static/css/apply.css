@@ -1,0 +1,18 @@
+.applyForm{
+  padding: 1rem;
+  width: 50%;
+  margin: auto;
+}
+
+
+
+.select{
+  width: 100%;
+}
+#animal_sponsor{
+  width: 100%;
+}
+
+ul li{
+  margin-bottom: 0.5rem;
+}

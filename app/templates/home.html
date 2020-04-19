@@ -30,4 +30,44 @@
   </div>
 </div>
 
+<div class="aboutDiv">
+  <div class="about">
+    <div class="logo">
+      <img src="/static/Images/download.jpg" alt="" srcset="" />
+    </div>
+    <div class="bottom">
+      <h1 class="title">About our park</h1>
+      <p class="subtitle">
+        Learn more about Central Park Zoo’s history, animal collection, and
+        more.
+      </p>
+      <button>Learn More</button>
+    </div>
+  </div>
+  <div class="infoDiv">
+    <div class="map">
+      <p>visit today</p>
+      <img src="/static/Images/map.bmp" alt="" srcset="" />
+      <a href="" style="display: flex; align-items: flex-end;">
+        <img src="/static/Images/map.png" alt="" srcset="" class="ico" />
+        <p>See more</p>
+      </a>
+      <hr />
+      <a href="" style="color: yellow;">Check out our FAQ!</a>
+    </div>
+    <div class="schedule">
+      <h1 class="title">Today at the Zoo</h1>
+      {% if events %} {% for event in events %}
+
+      {% endfor %} {%else%}
+      <div class="warning">
+        <img src="/static/Images/warning.png" alt="" srcset="" />
+        <p>No current events!</p>
+      </div>
+      {% endif %}
+    </div>
+    <div class="bottomBanner"></div>
+  </div>
+</div>
+{% include './sponsor.html' %}
 {% endblock content %}

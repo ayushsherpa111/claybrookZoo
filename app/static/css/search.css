@@ -1,0 +1,75 @@
+.searchDiv {
+  width: 100%;
+  display: flex;
+}
+
+.searchPanel {
+  background-color: #383838;
+  padding: 1rem;
+  width: 21%;
+}
+.searchPanel .title {
+  color: white !important;
+  font-size: 1.4rem;
+  letter-spacing: 0.2rem;
+}
+.searchForm .field {
+  margin-bottom: 1.75rem;
+}
+.searchResult {
+  padding: 1rem;
+  width: 79%;
+}
+.searchForm {
+  width: 97%;
+}
+.booo {
+  display: none;
+}
+.field .label {
+  color: white;
+}
+
+.timeRange {
+  display: flex;
+  flex-direction: row;
+}
+
+.timeRange .field {
+  padding: 0.5rem;
+}
+.result {
+  display: flex;
+  flex-direction: column;
+}
+.item {
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 1px 1px 10px #0000003b;
+  margin-bottom: 1rem;
+  display: flex;
+  transition: all 500ms ease;
+}
+.item:hover {
+  cursor: pointer;
+  box-shadow: 1px 1px 10px #454545;
+}
+
+.item img {
+  width: 10rem;
+}
+
+.infoContent {
+  padding: 0 1rem;
+}
+
+.infoContent .data {
+  display: flex;
+}
+
+.infoContent .data label {
+  margin-right: .5rem;
+}
+
+.infoContent p {
+}

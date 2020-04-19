@@ -1,0 +1,72 @@
+{% extends 'staff/staffLayout.html' %} {% block content %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static',filename='css/staff/sick.css')}}"
+/>
+<div class="heading">
+  <div class="title">
+    Health Monitor
+  </div>
+</div>
+<div class="sickness">
+  {% for animal in animals %}
+  <div class="sickem">
+    <img
+      src="{{url_for('static',filename='images/'+animal['classif']+"/"+animal['image'][0])}}"
+      alt=""
+      srcset=""
+    />
+    <div class="detail">
+      <div>
+        <label class="label">
+          Animal Name
+        </label>
+        <p class="name">
+          {{animal['animal_name']}}
+        </p>
+      </div>
+      <div>
+        <label class="label">
+          Species
+        </label>
+        <p class="name">
+          {{animal['species']}}
+        </p>
+      </div>
+      <div>
+        <label class="label">
+          Date Added
+        </label>
+        <p class="name">
+          {{animal['dateAdded']}}
+        </p>
+      </div>
+      <div>
+        <label class="label">
+          Gender
+        </label>
+        <p class="name">
+          {{"Female" if animal['gender'] == "F" else "Male"}}
+        </p>
+      </div>
+      <div>
+        <label class="label">
+          Status
+        </label>
+        <p class="name" style="text-transform: capitalize;">
+          {{animal['status']}}
+        </p>
+      </div>
+    </div>
+    <div class="sick_options">
+      {% for sev in severity %}
+        <a href="/staff/{{animal['classif']}}/{{animal['_id']}}/{{sev}}">
+          <p>{{sev}}</p>
+          <img src="{{url_for('static',filename='images/'+severity[sev])}}" alt="">
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+.sickness {
+  margin-top: 1rem;
+  width: 99%;
+  margin-right: auto;
+  margin-bottom: 1rem;
+}
+.heading .title{
+  color: white;
+  font-size: 1.5rem;
+  letter-spacing: 0.5rem;
+}
+.sickem {
+  width: 100%;
+  padding: 1rem;
+  color:black;
+  background-color: white;
+  display: flex;
+}
+
+.sickem img {
+  width: 12rem;
+}
+
+.sickem:not(:last-child){
+  margin-bottom: 1rem;
+}
+
+.detail{
+  margin-left: 0.7rem;
+  display: flex;
+  flex-direction: column;
+}
+.detail div{
+  display: flex;
+}
+
+.detail .label{
+  margin: 0;
+}
+
+.detail p{
+  margin-left: 0.5rem;
+}
+.sick_options{
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  width: 14%;
+}
+.sick_options a{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.sick_options p{
+  text-transform: capitalize;
+  font-weight: bolder;
+}
+.sick_options a img{
+  width: 1.5rem;
+}

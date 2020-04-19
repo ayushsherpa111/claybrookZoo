@@ -8,5 +8,5 @@ class Category:
     cats = []
     for i in cls.db.find({}):
       img = i['category'].lower() + "/" + i['profile']
-      cats.append({'category':i['category'],'profile':img})
+      cats.append({'category':i['category'].capitalize(),'profile':img})
     return cats

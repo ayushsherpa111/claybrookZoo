@@ -1,0 +1,34 @@
+.sponsored {
+  padding: 1rem;
+  margin-top: 1.5rem;
+  margin-left: 2rem;
+}
+.sponsored .heading .title {
+  color: black !important;
+  letter-spacing: 0.2rem;
+  font-size: 1.5rem;
+}
+.inforCards {
+  margin-left: 1rem;
+}
+.card{
+  background-color: #b6676763;
+}
+.card-content .content {
+  border-radius: 4px;
+  margin: auto;
+  margin-top: 25px;
+  color: black;
+  width: 100%;
+  font-weight: 700;
+  box-shadow: none;
+}
+
+.signageDiv{
+  width: 100%;
+  margin-top: 2rem;
+}
+.signageDiv img{
+  margin: 1rem;
+  width: 10rem;
+}

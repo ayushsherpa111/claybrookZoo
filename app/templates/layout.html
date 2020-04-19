@@ -10,13 +10,14 @@
       href="https://fonts.googleapis.com/css?family=Raleway"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="static/css/bulma/css/bulma.min.css" />
-    <link rel="stylesheet" href="static/css/index.css" />
+    <link rel="stylesheet" href="{{url_for('static',filename='css/bulma/css/bulma.min.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}" />
+    <link rel="shortcut icon" type="image/png" href="{{url_for('static',filename='images/favicon.jpg')}}"/>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <script src="static/js/index.js"></script>
+    <script src="{{url_for('static',filename='js/index.js')}}"></script>
   </head>
   <body>
     {% if banner == True%}
@@ -27,7 +28,7 @@
       {% include 'banner.html' %}
     </div>
     {%endif%} {% include 'header.html' %} {% block content %} {% endblock %}
-    <div class="container is-fluid">
+    <div class="container is-fluid booo">
       {% block register %} {% endblock register %} {% with messages =
       get_flashed_messages(with_categories=true) %} {% if messages %}
       <div class="content">

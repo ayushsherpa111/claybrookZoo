@@ -1,0 +1,116 @@
+{%extends 'layout.html'%}
+{%block content%}
+<link rel="stylesheet" href="{{url_for('static',filename='css/apply.css')}}">
+<div class="applyForm">
+  <form action="/apply" method="POST" enctype="multipart/form-data">
+    {{form.hidden_tag()}}
+    <div class="field">
+      {{form.client_name.label(class="label")}}
+      <div class="control has-icons-left has-icons-right">
+        {{form.client_name(class="input")}}
+      </div>
+      {% if form.client_name.errors %}
+        {% for error in form.client_name.errors %}
+          <p class="help is-danger">{{error}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="field">
+      {{form.client_address.label(class="label")}}
+      <div class="control has-icons-left has-icons-right">
+        {{form.client_address(class="input")}}
+      </div>
+      {% if form.client_address.errors %}
+        {% for error in form.client_address.errors %}
+          <p class="help is-danger">{{error}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="field">
+      {{form.client_estate.label(class="label")}}
+      <div class="control has-icons-left has-icons-right">
+        {{form.client_estate(class="input")}}
+      </div>
+      {% if form.client_estate.errors %}
+        {% for error in form.client_estate.errors %}
+          <p class="help is-danger">{{error}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="field">
+      {{form.client_city.label(class="label")}}
+      <div class="control has-icons-left has-icons-right">
+        {{form.client_city(class="input")}}
+      </div>
+      {% if form.client_city.errors %}
+        {% for error in form.client_city.errors %}
+          <p class="help is-danger">{{error}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="field">
+      {{form.client_country.label(class="label")}}
+      <div class="control has-icons-left has-icons-right">
+        {{form.client_country(class="input")}}
+      </div>
+      {% if form.client_country.errors %}
+        {% for error in form.client_country.errors %}
+          <p class="help is-danger">{{error}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+    {% if form.animal_sponsor.choices | length  > 0%}
+    <div class="field">
+      {{form.animal_sponsor.label(class="label")}}
+      <div class="select is-multiple">
+        {{form.animal_sponsor(size="4")}}
+      </div>
+      {% if form.animal_sponsor.errors %}
+        {% for error in form.client_city.errors %}
+          <p class="help is-danger">{{error}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+    {% else %}
+      <h1 class="subtitle">NO ANIMALS AVAILABLE</h1>
+    {% endif %}
+    <div class="field">
+      {{form.sponsor_band.label(class="label")}}
+      <div class="control has-icons-left has-icons-right">
+        {{form.sponsor_band(class="radio")}}
+      </div>
+      {% if form.sponsor_band.errors %}
+        {% for error in form.sponsor_band.errors %}
+          <p class="help is-danger">{{error}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+    <div class="file">
+      <label class="file-label">
+        {{form.signage(class="file-input is-primary",id="signage")}}
+        <span class="file-cta">
+          <span class="file-icon">
+            <i class="fas fa-upload"></i>
+          </span>
+          <span class="file-label">
+            Choose your signage..
+          </span>
+        </span>
+      </label>
+    </div>
+    <div class="field is-grouped" style="margin-top:1rem;">
+      <div class="control">
+        {{form.submit(class="button is-link")}}
+      </div>
+      <div class="control">
+        <button class="button is-link is-light">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+  const fileUpload = document.getElementById('signage')
+</script>
+
+{% endblock %}

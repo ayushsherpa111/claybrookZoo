@@ -1,0 +1,58 @@
+{%extends 'layout.html'%} {% block content %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static',filename='css/category.css')}}"
+/>
+{% include 'featured.html' %}
+<div class="map">
+  <div class="location" style="background-image: url({{url_for('static',filename='images/'+mp+'/map.jpg')}});"></div>
+  <div class="info">
+    <div class="inforBlock">
+      <h1 class="title">Description</h1>
+      <p>
+        <!-- {{body}} -->
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit,
+        exercitationem? Amet, molestiae? Veniam ullam earum quibusdam
+        asperiores, eum minus non.
+      </p>
+    </div>
+    <div class="inforBlock">
+      <h1 class="title">Schedule</h1>
+      <p>
+        <img
+          src="{{url_for('static',filename='images/time.png')}}"
+          alt=""
+          srcset=""
+        />
+        Open year round
+      </p>
+    </div>
+    <div class="inforBlock">
+      <h1 class="title">Accessibility</h1>
+      <p>
+        <img
+          src="{{url_for('static',filename='images/wheel.png')}}"
+          alt=""
+          srcset=""
+        />
+        Wheel Chair Accessible
+      </p>
+    </div>
+  </div>
+</div>
+<div class="animals">
+  <h1 class="title">Featuring</h1>
+  <div class="qtx">
+    {% for animal in animals %}
+    <div class="animalDetail" style="background-image: url({{animal['mascot']}});" onclick="goToAnimal('{{animal['location']}}','{{animal['_id']}}')">
+      <p>{{animal['animal_name']}}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+<script>
+  function goToAnimal(category,id){
+    window.location = `/${category.toLowerCase()}/${id}`
+  }
+</script>
+{% endblock content %}

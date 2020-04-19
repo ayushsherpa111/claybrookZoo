@@ -1,0 +1,41 @@
+.sponsor {
+  width: 100%;
+  /* background-color: #1b71b2; */
+  background-image: url("/static/images/grasss.png");
+  height: 20rem;
+  display: flex;
+  text-align: center;
+}
+.sponsor img {
+  position: relative;
+  width: 16rem;
+  left: -15%;
+  top: 3.8rem;
+}
+.sponsor h1 {
+  text-transform: capitalize;
+}
+
+.sponsor button {
+  padding: 0.5rem 1.2rem;
+  text-transform: uppercase;
+  border-radius: 8px;
+  border: none;
+  margin-top: 1.5rem;
+  font-size: 1.8rem;
+  letter-spacing: 0.11rem;
+  background-color: #36ad47;
+  color: white;
+  transition: all 200ms ease;
+}
+
+.sponsor button:hover {
+  cursor: pointer;
+  box-shadow: 0px 2px 7px #00000070;
+}
+
+.sponsor .info {
+  padding: 1rem;
+  margin: auto;
+  margin-left: 35rem;
+}

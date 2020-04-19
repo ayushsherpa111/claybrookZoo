@@ -1,0 +1,106 @@
+.details {
+  background-image: url("/static/images/grasss.png");
+}
+.heading {
+  padding-top: 3rem;
+}
+.heading .title {
+  font-size: 3rem;
+  letter-spacing: 0.4rem;
+  text-align: center;
+}
+.heading .subtitle {
+  text-align: center;
+  color: black;
+  font-weight: 500;
+  text-transform: initial;
+}
+
+.info {
+  padding: 1rem 0 0;
+}
+.description {
+  width: 75%;
+  margin: auto;
+  font-size: 1.1rem;
+}
+
+.booo {
+  display: none;
+}
+.fun {
+  display: flex;
+  margin-top: 3rem;
+}
+
+.fact {
+  padding: 1rem;
+  width: fit-content;
+}
+.fact .title {
+  text-transform: uppercase;
+}
+.is-orange {
+  text-align: justify;
+  color: white;
+  width: 26rem;
+  background-color: #e17c0f;
+}
+.is-orange .title {
+  color: white;
+}
+.is-green {
+  color: white;
+  background-color: #a5d02d;
+}
+.is-green .title {
+  color: white;
+}
+.inf {
+  display: flex;
+  margin-right: 0.8rem;
+}
+.inf .subtitle {
+  margin-bottom: 0.6rem;
+}
+.inf p:first-child {
+  margin-right: 1rem;
+}
+.dets {
+  display: flex;
+  flex-direction: column;
+  height: 13rem;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+
+.sponsorDiv {
+  padding: 1rem;
+}
+.sposn {
+  display: grid;
+  padding: 0 4rem;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.sponsCard {
+  box-shadow: 1px 1px 15px;
+  border-radius: 8px;
+  width: 15rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sponsCard img {
+  width: 13rem;
+  height: 12rem;
+}
+.ispad{
+  padding: 1rem;
+  color: black;
+}
+
+@media (max-width: 1400px) {
+  .fact .title {
+    font-size: 1.5rem;
+  }
+}

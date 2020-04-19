@@ -1,8 +1,8 @@
-<link rel="stylesheet" href="/static/css/staff/animalForm.css" />
+<link rel="stylesheet" href="{{url_for("static",filename='css/staff/animalForm.css')}}" />
 <form action="" method="POST" class="formDiv" enctype="multipart/form-data">
+  {{form.hidden_tag()}}
   <div class="formBlock">
     <div class="field">
-      {{form.hidden_tag()}}
       {{form.species.label(class="label")}}
       <div class="control">
         {{form.species(class="input",placeholder="Enter Species Name...")}}
@@ -21,6 +21,18 @@
       </div>
       {% if form.animal_name.errors %}
         {% for error in form.animal_name.errors %}
+          <p class="help is-danger">{{error}}</p>
+        {% endfor %}
+      {% endif %}
+    </div>
+
+    <div class="field">
+      {{form.classification.label(class="label")}}
+      <div class="control">
+        {{form.classification(class="input",placeholder="Animal's Classification")}}
+      </div>
+      {% if form.classification.errors %}
+        {% for error in form.classification.errors %}
           <p class="help is-danger">{{error}}</p>
         {% endfor %}
       {% endif %}
@@ -140,6 +152,8 @@
       {% include 'staff/birdForm.html' %} 
     {% elif category == "Reptiles" or category == "Amphibians" %}
       {% include 'staff/reptileAndAmp.html' %}
+    {% elif category == "Fishes" %}
+      {% include 'staff/fishForm.html'%}
     {%endif%}
 
     <div class="field">

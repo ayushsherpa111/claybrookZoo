@@ -20,6 +20,7 @@ function approve(row, email, role) {
       .then(res => res.json())
       .then(confirm => {
         userTable.deleteRow(index);
+        window.location = "/staff"
         console.log(confirm);
       })
       .catch(err => {

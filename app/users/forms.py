@@ -15,10 +15,10 @@ def validate_name(field):
 
   def _taken(form,field):
     if field == "Email":
-      if userDB.find_by_email(field.data):
+      if userDB.find_by_email(field.data).count() > 0:
         raise ValidationError(message)
     else:
-      if userDB.find_by_username(field.data):
+      if userDB.find_by_username(field.data).count() > 0:
         raise ValidationError(message)
   return _taken
 
@@ -55,6 +55,7 @@ class StaffForm(FlaskForm):
 class AnimalForm(FlaskForm):
   species = StringField("Species",validators=[DataRequired(),Regexp("^[^\d\W][a-zA-Z\s()]+$",message="Invalid Species Name")])
   animal_name = StringField("Animal Name",validators=[DataRequired(),Regexp("^[^\d\W][a-zA-Z\s()]+$",message="Invalid Animal Name")])
+  classification = StringField("Animal Class",validators=[DataRequired(),Regexp("^[^\d\W][a-zA-Z\s()]+$",message="Invalid Animal Name")])
   date_of_birth = DateField("Date Of Birth",validators=[DataRequired()])
   gender = RadioField("Gender",choices=[('M',"Male"),('F',"Female")],validators=[DataRequired()])
   lifespan = IntegerField("Lifespan",validators=[DataRequired(),NumberRange(min=1)])
@@ -85,8 +86,12 @@ class ReptileAndAmphForm(AnimalForm):
   average_clutch_size = IntegerField("Average clutch size",validators=[DataRequired(),NumberRange(min=1)])
   average_offspring_number = IntegerField("Average offspring",validators=[DataRequired(),NumberRange(min=1)])
 
+class FishForm(AnimalForm):
+  average_body_temp = IntegerField("Average Body Temperature",validators=[DataRequired()])
+  water_type = StringField("Water Type",validators=[DataRequired()])
+  color_variant = IntegerField("Color Variant",validators=[DataRequired()])
 
 def getAnimalForm(animal):
-  arrOfAnimals = {'mammals':MammalForm(),'birds':BirdForm()}
+  arrOfAnimals = {'mammals':MammalForm(),'birds':BirdForm(),'reptiles':ReptileAndAmphForm(),'amphibians':ReptileAndAmphForm(),'fishes':FishForm()}
   animal = animal.lower()
   return arrOfAnimals.get(animal,None)

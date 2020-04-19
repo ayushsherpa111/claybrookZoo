@@ -46,7 +46,7 @@
   border-radius: 2px;
 }
 
-.animalCategory button:hover{
+.animalCategory button:hover {
   cursor: pointer;
 }
 .animalCategory h1 {
@@ -78,4 +78,11 @@
 }
 .animal-4 {
   background-image: url("../images/bamboo.png");
+}
+
+.subNav {
+  background-size: 100vw 69vh;
+}
+.booo{
+  display: none;
 }

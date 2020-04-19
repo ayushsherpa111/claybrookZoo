@@ -1,0 +1,91 @@
+{%extends 'layout.html'%} {% block content %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/staff/animalinfo.css')}}">
+<link rel="stylesheet" href="{{url_for('static',filename='css/sponsorAnimal.css')}}">
+<div class="sponsored">
+  <div class="heading">
+    <h1 class="title">
+      Sponsored Animals
+    </h1>
+  </div>
+    {% if animals | length > 0 %}
+    <div class="infoCards">
+      {% for animal in animals %}
+      <div class="card" onclick='showAnimal("{{animal['location']}}","{{animal['_id']}}")'>
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img
+              src="/static/images/{{animal['classif']}}/{{animal['image'][0]}}"
+              alt="Image of Animal"
+            />
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4">{{animal['animal_name']}}</p>
+              <p class="subtitle is-6">{{animal['species']}}</p>
+            </div>
+          </div>
+
+          <div class="content">
+            <strong>Located at:</strong> {{animal['location']}}
+            <br />
+            <strong>Gender: </strong> {{animal['gender']}}
+            <br />
+            <strong>Category: </strong> {{animal['category']}}
+            <br />
+            <strong>Archive: </strong> {{animal.get('archive',False)}}
+            <br />
+            <strong>Date Added:</strong>
+            <time datetime="2016-1-1">{{animal['dateAdded']}}</time>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+      <h1>No Animals Sponsored</h1>
+    {% endif %}
+  <div class="signageDiv">
+    <div class="heading">
+      <h1 class="title">
+        Current Signage
+      </h1>
+    </div>
+    <img src="{{url_for('static',filename="images/signage/"+sponsor['signage'])}}" alt="">
+    <form action="/signageUpdate" method="POST" enctype="multipart/form-data">
+      <label for="" class="label">Upload a new Signage</label>
+      <div class="file has-name">
+        <label class="file-label">
+          <input class="file-input" type="file" name="signage" id="sign" required>
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose a file…
+            </span>
+          </span>
+          <span class="file-name" id="filename">
+            Select a signage... 
+          </span>
+        </label>
+      </div>
+      <div class="field" style="margin-top: 1rem; justify-content: flex-end;">
+        <input class="button is-primary" type="submit" value="Change">
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+  const fileUp = document.getElementById('sign')
+  const fileName = document.getElementById("filename")
+  fileUp.addEventListener('change',(e)=>{
+    fileName.textContent = e.target.files[0].name 
+  })
+  function showAnimal(cmp,_id){
+    cmp = cmp.toLowerCase();
+    window.location = `/${cmp}/${_id}`
+  }
+</script>
+{% endblock %}

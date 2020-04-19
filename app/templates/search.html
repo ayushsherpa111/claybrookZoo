@@ -1,0 +1,82 @@
+{% extends 'layout.html' %} {% block content %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/search.css')}}" />
+<div class="searchDiv">
+  <div class="searchPanel">
+    <h1 class="title">Search Options</h1>
+    <div class="searchForm">
+      <form action="/search/advance" method="POST">
+        {{form.hidden_tag()}}
+        <div class="field">
+          {{form.animal_name.label(class='label')}}
+          <div class="control">
+            {{form.animal_name(class="input",placeholder="Animal Name..")}}
+          </div>
+        </div>
+        <div class="field">
+          {{form.species.label(class='label')}}
+          <div class="control">
+            {{form.species(class="input",placeholder="Species..")}}
+          </div>
+        </div>
+
+        <div class="field">
+          {{form.category.label(class='label')}}
+          <div class="select" style="width: 100%;">
+            {{form.category(style="width:100%")}}
+          </div>
+        </div>
+        <label for="" class="label" style="color: white; margin: 0;"
+          >Date of birth</label
+        >
+        <div class="timeRange">
+          <div class="field">
+            {{form.fromDate.label(class='label')}}
+            <div class="control">
+              {{form.fromDate(class="input",type="number",placeholder="From...")}}
+            </div>
+          </div>
+          <div class="field">
+            {{form.toDate.label(class='label')}}
+            <div class="control">
+              {{form.toDate(class="input",type="number",placeholder="To...")}}
+            </div>
+          </div>
+        </div>
+        <div class="field">
+          <div class="control">
+            {{form.submit(class="button is-primary")}}
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="searchResult">
+    <h1 class="title">Search Results</h1>
+    <div class="result">
+      {% for result in results %}
+      <div class="item">
+        <img src="{{'/static'+'/images/'+result['classif']+'/'+result['image'][0]}}" alt="" />
+        <div class="infoContent">
+          <div class="data">
+            <label for="" class="label">Animal Name:</label>
+            <p>{{result['animal_name']}}</p>
+          </div>
+          <div class="data">
+            <label for="" class="label">Located At:</label>
+            <p>{{result['location']}}</p>
+          </div>
+          <div class="data">
+            <label for="" class="label">Date Of Birth:</label>
+            <p>{{result['date_of_birth']}}</p>
+          </div>
+          <div class="data">
+            <label for="" class="label">Gender:</label>
+            <p>{{"Male" if result['gender'] == "M" else "Female"}}</p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

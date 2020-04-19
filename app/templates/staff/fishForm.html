@@ -1,0 +1,37 @@
+<div class="field">
+  {{form.average_body_temp.label(class="label")}}
+  <div class="control">
+    {{form.average_body_temp(class="input",type="number",placeholder="Animals\
+    Gestational Period [ IN MONTHS ]...")}}
+  </div>
+  {% if form.average_body_temp.errors %}
+    {% for error in form.average_body_temp.errors %}
+      <p class="help is-danger">{{error}}</p>
+    {% endfor %}
+  {% endif %}
+</div>
+
+<div class="field">
+  {{form.water_type.label(class="label")}}
+  <div class="control">
+    {{form.water_type(class="input",placeholder="Mammal Classification")}}
+  </div>
+  {% if form.water_type.errors %}
+    {% for error in form.water_type.errors %}
+      <p class="help is-danger">{{error}}</p>
+    {% endfor %}
+  {% endif %}
+</div>
+
+<div class="field">
+  {{form.color_variant.label(class="label")}}
+  <div class="control">
+    {{form.color_variant(class="input",type="number",placeholder="Average Body Temperature\
+    in °C")}}
+  </div>
+  {% if form.color_variant.errors %}
+    {% for error in form.color_variant.errors %}
+      <p class="help is-danger">{{error}}</p>
+    {% endfor %}
+  {% endif %}
+</div>

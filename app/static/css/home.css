@@ -50,3 +50,145 @@
 .card .image img:hover {
   transform: scale(1.1);
 }
+
+.aboutDiv {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+}
+
+.about {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-image: url("/static/Images/texture.jpg");
+  padding: 3.5rem;
+}
+.about .logo {
+  width: 18rem;
+}
+.about .logo img {
+  display: flex;
+  border-radius: 50%;
+}
+
+.bottom {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+.bottom h1 {
+  text-transform: uppercase;
+  color: #36ad47;
+  letter-spacing: 0.3rem;
+  font-size: 2.4rem;
+  margin-bottom: 1.1rem !important;
+  font-weight: 900;
+}
+.bottom .subtitle {
+  color: #3c3c3c;
+  margin: 0 !important;
+}
+.bottom button {
+  margin-top: 3.2rem;
+  padding: 11px 28px;
+  font-size: 1rem;
+  text-transform: uppercase;
+  background-color: #36ad47;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  transition: all 250ms ease-in-out;
+}
+
+.bottom button:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+
+.infoDiv {
+  width: 50%;
+  height: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  /* padding: 1rem; */
+}
+.map {
+  width: 51%;
+  padding: 1rem;
+  color: white;
+  display: flex;
+  background-color: #36ad47;
+  flex-direction: column;
+}
+.map p {
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+  margin: auto 0;
+}
+.map a {
+  margin-top: 1.1rem;
+}
+.map .ico {
+  width: 2rem;
+  margin-right: 1rem;
+}
+.map a p {
+  color: yellow;
+  font-weight: bold;
+}
+
+.map img {
+  width: 20rem;
+  margin: 0.5rem;
+  align-self: center;
+}
+
+.schedule {
+  width: 49%;
+  background-image: url("/static/Images/texture.jpg");
+  display: flex;
+  padding: 1.1rem;
+  align-items: center;
+  flex-direction: column;
+}
+.schedule h1 {
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  font-size: 1.3rem;
+  margin-top: 1rem;
+}
+.warning {
+  width: 100%;
+  margin-top: 1rem;
+  display: flex;
+  color: #7a4901;
+  font-size: 1.2rem;
+  height: 13%;
+  padding: 0rem;
+  justify-content: center;
+}
+.warning p {
+  margin: auto 0;
+}
+
+.warning img {
+  width: 2rem;
+  margin: auto 0;
+  margin-right: 1rem;
+}
+
+.bottomBanner {
+  height: 194px;
+  width: 100%;
+  background: url("/static/Images/redPA.jpg");
+  background-position-y: -121px;
+  background-position-x: center;
+  background-size: 1071px;
+}
+.booo{
+  display: none;
+}

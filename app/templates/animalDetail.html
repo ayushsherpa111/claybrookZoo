@@ -1,0 +1,84 @@
+{% extends 'layout.html' %} {% block content %} {% include 'featured.html' %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/detail.css')}}" />
+<div class="details">
+  <div class="heading">
+    <h1 class="title">
+      the {{found['species']}}
+    </h1>
+    <p class="subtitle">
+      {{found['category']}}
+    </p>
+    <p class="subtitle">
+      Find {{'her' if found['gender'] == "F" else "him"}} at the {{found['location']}}
+    </p>
+  </div>
+  <div class="info">
+    {% if found %}
+    <div class="description">
+      <p>
+        {{found['habitat']}}
+      </p>
+      <br>
+    </div>
+    <div class="fun">
+      <div class="fact is-orange">
+        <h1 class="title">
+          Dietary Requirements
+        </h1>
+        <p>{{found['diet']}}</p>
+      </div>
+      <div class="fact is-green">
+        <h1 class="title">
+          Life Span
+        </h1>
+        <p>{{found['lifespan']}}</p>
+      </div>
+      <div class="fact">
+        <h1 class="title">
+          About {{found['animal_name']}}
+        </h1>
+        <div class="dets">
+          {% for fnd in found %}
+          {% if fnd not in unwanted  %}
+            <div class="inf">
+              <p class="subtitle">{{" ".join(fnd.split('_')).capitalize()}}</p>
+              <p>{{found[fnd]}}</p>
+            </div>
+          {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% if sponsors.count() > 0 %}
+      <div class="sponsorDiv">
+        <div class="title">
+          Thanks to our sponsors
+        </div>
+        <div class="sposn">
+          {% for i in sponsors%}
+            <div class="sponsCard">
+              <img src="/static/images/signage/{{i['signage']}}" alt="">
+              <div class="info ispad">
+                {{i['company_name']}}
+                <br>
+                {{i['city']}}
+                <br>
+                {{i['estate']}}
+                <br>
+                {{i['address']}}
+                <br>
+                {{i['country']}}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      {% endif %}
+      {%include 'sponsor.html'%}
+    {% else %} 
+
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}

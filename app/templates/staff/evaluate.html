@@ -1,5 +1,5 @@
 {%extends 'staff/staffLayout.html'%} {% block content %}
-<link rel="stylesheet" href="static/css/staff/evaluate.css" />
+<link rel="stylesheet" href="{{url_for('static',filename="css/staff/evaluate.css")}}" />
 <div class="evaluate">
   <table class="table is-fullwidth is-hoverable ">
     <thead>
@@ -56,6 +56,6 @@
     {% endif %}
   </table>
 </div>
-<script defer src="static/js/staff/evaluate.js"></script>
+<script defer src="{{url_for('static',filename="js/staff/evaluate.js")}}"></script>
 
 {% endblock content %}

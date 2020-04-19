@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+{% block content %}
+<style>
+  .ticket{
+    background-image: url("{{url_for('static',filename='images/ticket.jpg')}}");
+    padding: 2rem;
+  }
+  .ticketPackage {
+    background-color: white;
+    width: 15rem;
+    margin-left: 2rem;
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    transition: all 200ms ease-in;
+  }
+  .ticketPackage img{
+    width: 9rem;
+  }
+  .ticketPackage p{
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    font-weight: bold;
+  }
+  .ticketPackage:hover{
+    box-shadow: 1px 1px 15px black;
+  }
+  .title{
+    color: white;
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 1.2rem;
+  }
+  .booo{
+    display: none;
+  }
+</style>
+  <div class="ticket">
+    <h1 class="title">Ticket Deals</h1>
+    <div style="display: flex;">
+      <div class="ticketPackage">
+        <img src="{{url_for('static',filename='images/family.png')}}" alt="" srcset="">
+        <p>Family Package</p>
+        <p>$30</p>
+      </div>
+      <div class="ticketPackage">
+        <img src="{{url_for('static',filename='images/sad.png')}}" alt="" srcset="">
+        <p>Single Package</p>
+        <p>$8</p>
+      </div>
+      <div class="ticketPackage">
+        <img src="{{url_for('static',filename='images/couple.png')}}" alt="" srcset="">
+        <p>Couple Package</p>
+        <p>$20</p>
+      </div>
+    </div>
+  </div>
+{% endblock %}

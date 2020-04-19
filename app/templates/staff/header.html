@@ -10,7 +10,7 @@ href="{{url_for('static',filename="css/staff/header.css")}}" />
   </div>
   {% endif %} {% endwith %}
   <div class="navbar-end">
-    <p class="control has-icons-left ">
+    <p class="control has-icons-left">
       <input
         class="input search is-rounded"
         type="text"
@@ -23,12 +23,17 @@ href="{{url_for('static',filename="css/staff/header.css")}}" />
         />
       </span>
     </p>
-    <div class="notifBell">
+    <div class="notifBell" onclick="(()=>window.location='/staff/sponsor')()">
       <img
         src='{{url_for("static",filename="images/bell.png")}}'
         alt=""
         srcset=""
       />
+      {% if newSponsors %}
+      <div class="notif">
+        <p>{{newSponsors}}</p>
+      </div>
+      {% endif %}
     </div>
     <div class="userProf">
       <div>

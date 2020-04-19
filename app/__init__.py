@@ -16,7 +16,9 @@ app.passRounds = int(os.environ["PASS_ROUND"])
 from app.main.routes import home
 from app.users.routes import user
 from app.animals.routes import animal
+from app.sponsors.routes import sponsor
 
 app.register_blueprint(home)
 app.register_blueprint(user)
 app.register_blueprint(animal)
+app.register_blueprint(sponsor)

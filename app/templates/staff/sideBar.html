@@ -20,7 +20,7 @@ href="{{url_for('static',filename="css/staff/sidebar.css")}}" />
     </li>
 
     <li class="nav-item">
-      <a href="#" class="nav-link">
+      <a href="/staff/sponsor" class="nav-link">
         <img src="{{url_for("static",filename="images/dolla.png")}}" alt=""
         srcset="" />
         <span class="link-text">Sponsors</span>
@@ -38,7 +38,7 @@ href="{{url_for('static',filename="css/staff/sidebar.css")}}" />
     {% if session.get('current_user',None) and
     session.get('current_user')['role'] == "Admin" %}
     <li class="nav-item">
-      <a href="evaluate" class="nav-link">
+      <a href="/staff/evaluate" class="nav-link">
         <img src="{{url_for("static",filename="images/newUser.png")}}" /> {% if
         newUsers.count() > 0 %}
         <div class="smallnotif"></div>
@@ -46,9 +46,18 @@ href="{{url_for('static',filename="css/staff/sidebar.css")}}" />
         <span class="link-text">New Members </span>
       </a>
     </li>
+    <li class="nav-item">
+      <a href="/staff/logs" class="nav-link">
+        <img src="{{url_for("static",filename="images/logs.png")}}" /> {% if
+        newUsers.count() > 0 %}
+        <div class="smallnotif"></div>
+        {% endif %}
+        <span class="link-text">Activity Log</span>
+      </a>
+    </li>
     {% endif %}
     <li class="nav-item" id="themeButton">
-      <a class="nav-link" href="logout">
+      <a class="nav-link" href="/logout">
         <img src="{{url_for("static",filename="images/power.png")}}"
         class="power" />
         <span class="link-text">Log off</span>

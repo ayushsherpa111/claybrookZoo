@@ -1,0 +1,91 @@
+{% extends 'staff/staffLayout.html' %} {% block content %}
+<link
+  rel="stylesheet"
+  href="{{url_for('static',filename='css/staff/sponsor.css')}}"
+/>
+<div class="sponsorDiv">
+  <div class="title">
+    <h1 class="title">
+      Latest Sponsors
+    </h1>
+  </div>
+  {% if sponsors.count() > 0 %}
+  <div class="spon">
+    {% for sponsor in sponsors %}
+    <div class="sponsorCard">
+      <div
+        class="signage"
+        style="
+          background-image: url('/static/images/signage/{{sponsor["signage"]}}');
+        "
+      ></div>
+      <div class="info">
+        <div class="field">
+          <label class="label">Business Name:</label>
+          <p class="subtitle">{{sponsor['company_name']}}</p>
+        </div>
+        <div class="field">
+          <label class="label">Address:</label>
+          <p class="subtitle">{{sponsor['company_name']}}</p>
+        </div>
+        <div class="field">
+          <label class="label">Estate:</label>
+          <p class="subtitle">{{sponsor['estate']}}</p>
+        </div>
+        <div class="field">
+          <label class="label">Country:</label>
+          <p class="subtitle">{{sponsor['country']}}</p>
+        </div>
+        <div class="field">
+          <label class="label">Number of Animals Sponsored:</label>
+          <p class="subtitle">{{sponsor['animal_sponsor'] | length}}</p>
+        </div>
+        <div class="field">
+          <label class="label">Approved:</label>
+          <p class="subtitle" id="approved">{{sponsor['approved']}}</p>
+        </div>
+        <div class="field">
+          <label class="label">Sponsor Band:</label>
+          <p class="subtitle">{{sponsor['band']}}</p>
+        </div>
+        {%if role == 'Admin'%}
+        <div class="field">
+          <form action="/staff/approve" style="display: flex;width: 100%;" method="POST">
+            <label class="label">Select Time Span:</label>
+            <input type="hidden" name="id" value="{{sponsor['_id']}}">
+            <input type="hidden" name="sponsor_id" value="{{sponsor['sponsor_id']}}">
+            <input
+              type="number"
+              min="1"
+              max="6"
+              name="months"
+              class="input"
+              style="margin-left: 1rem;"
+              placeholder="Sponsorship period"
+            />
+          </div>
+          <div class="field">
+            <button
+              class="button is-primary"
+              type="submit"
+            >
+              Approve
+            </button>
+          </form>
+        </div>
+        {%endif%}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <div class="empty">
+    <h1>
+      No new sponsors
+    </h1>
+  </div>
+  {% endif %}
+</div>
+
+
+{% endblock %}

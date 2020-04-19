@@ -1,0 +1,54 @@
+{% extends 'staff/staffLayout.html' %} {% block content %}
+<link rel="stylesheet" href="{{url_for('static',filename='css/staff/animalinfo.css')}}" />
+<div class="animalDetails">
+  <div class="titleDiv">
+    <h1 class="title">
+      {% if category.lower() == "total" %} Animals {% else %}
+      {{category.capitalize()}} {% endif %}
+    </h1>
+  </div>
+  <div class="infoCards">
+    {% for animal in animals %}
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img
+            src="/static/images/{{animal['classif']}}/{{animal['image'][0]}}"
+            alt="Image of Animal"
+          />
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">{{animal['animal_name']}}</p>
+            <p class="subtitle is-6">{{animal['species']}}</p>
+          </div>
+          <div class="archive">
+            <a href="/staff/{{animal['location'].lower()}}/{{animal['_id']}}/archive">
+              <img src="/static/images/arch.png" alt="">
+            </a>
+          </div>
+        </div>
+
+        <div class="content">
+          <strong>Located at:</strong> {{animal['location']}}
+          <br />
+          <strong>Gender: </strong> {{animal['gender']}}
+          <br />
+          <strong>Category: </strong> {{animal['category']}}
+          <br />
+          <strong>Archive: </strong> {{animal.get('archive',False)}}
+          <br />
+          <strong>Status: </strong> {{animal.get('status').capitalize()}}
+          <br />
+          <strong>Date Added:</strong>
+          <time datetime="2016-1-1">{{animal['dateAdded']}}</time>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock content %}

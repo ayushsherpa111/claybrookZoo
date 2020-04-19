@@ -9,6 +9,7 @@
 .formDiv form {
   display: flex;
 }
+
 .wide {
   border-radius: 8px;
   height: 3rem;
@@ -38,10 +39,9 @@ ul li {
   display: flex;
   flex-direction: column;
   width: 48%;
-}
-.formBlock:first-child {
   margin-right: 1rem;
 }
+
 .dynamicContent {
   width: 100%;
   margin-left: 1.5rem;

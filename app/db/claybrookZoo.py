@@ -9,6 +9,8 @@ aquarium = db.Aquarium
 hothouse = db.Hothouse
 categories = db.Categories
 users = db.Users
+contract = db.Contract
+log = db.Logs
 
 
 index = users.create_index([('email',ASCENDING)],unique=True)

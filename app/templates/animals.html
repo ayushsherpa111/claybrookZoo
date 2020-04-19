@@ -1,5 +1,10 @@
-{%extends 'layout.html'%} {%block content%} {% include 'featured.html' %} <link
-rel="stylesheet" href="{{url_for("static",filename="css/animals.css")}}">
+{%extends 'layout.html'%} {%block content%} {% include 'featured.html' %} 
+<script>
+  function getAnimals(location) {
+    window.location = `/animals/${location}`
+  }
+</script>
+<link rel="stylesheet" href="{{url_for("static",filename="css/animals.css")}}">
 <div class="container welcomeAnimals">
   <h1 class="is-2">
     Meet our animals
@@ -18,7 +23,7 @@ rel="stylesheet" href="{{url_for("static",filename="css/animals.css")}}">
         Mammals
       </h1>
       <p>Loins, Tigers, Gorillas, Lemurs, Pandas and more...</p>
-      <button>See Animals</button>
+      <button onclick="getAnimals('compound')">See Animals</button>
     </div>
   </div>
   <div style="overflow: hidden;">
@@ -27,7 +32,7 @@ rel="stylesheet" href="{{url_for("static",filename="css/animals.css")}}">
         Birds
       </h1>
       <p>Condor, Blue-throated macaw, Pelicans and more...</p>
-      <button>See Animals</button>
+      <button onclick="getAnimals('aviary')">See Animals</button>
     </div>
   </div>
   <div style="overflow: hidden;">
@@ -36,7 +41,7 @@ rel="stylesheet" href="{{url_for("static",filename="css/animals.css")}}">
         Reptiles and amphibians
       </h1>
       <p>Condor, Blue-throated macaw, Pelicans and more...</p>
-      <button>See Animals</button>
+      <button onclick="getAnimals('hothouse')">See Animals</button>
     </div>
   </div>
   <div style="overflow: hidden;">
@@ -45,9 +50,8 @@ rel="stylesheet" href="{{url_for("static",filename="css/animals.css")}}">
         Fishes
       </h1>
       <p>Condor, Blue-throated macaw, Pelicans and more...</p>
-      <button>See Animals</button>
+      <button onclick="getAnimals('aquarium')">See Animals</button>
     </div>
   </div>
 </div>
-
-{%endblock%}
+{% include './sponsor.html'%} {%endblock%}

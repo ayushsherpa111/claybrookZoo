@@ -14,18 +14,18 @@
         <img src="{{url_for('static',filename='images/add.png')}}" alt="" />
         <p>New</p>
       </a>
-      <a class="button">
+      <a class="button" href="">
         <img src="{{url_for('static',filename='images/arch2.png')}}" alt="" />
         <p>Archive</p>
       </a>
-      <a class="button">
+      <a class="button" href="/staff/health">
         <img src="{{url_for('static',filename='images/thermo.png')}}" alt="" />
         <p>Sick</p>
       </a>
       <a class="button">
         <img src="{{url_for('static',filename='images/events.png')}}" alt="" />
         <p>Events</p>
-        <a class="button">
+        <a class="button" href="/staff/sponsor">
           <img src="{{url_for('static',filename='images/dolla.png')}}" alt="" />
         <p>Sponsor</p>
       </a>
@@ -33,11 +33,31 @@
 
     <div class="dynamicContent">
       {% if addForm == False %}
+      <h1>Animal Distribution</h1>
       <div class="pie">
         <canvas id="pie" width="350px" height="250px"></canvas>
       </div>
       {% else %} {%include 'staff/animalForm.html'%} {%endif%}
     </div>
+    {% if addForm == False %}
+    <div class="animalView">
+      <div class="heading">
+        <h1>
+          Health Overview
+        </h1>
+        <img src="{{url_for('static',filename='images/health.png')}}" alt="" srcset="">
+      </div>
+      <div class="severity">
+        {% for sev in health_dist %}
+          <div class="monitor">
+            <img src="{{url_for('static',filename="images/"+severity[sev])}}" alt="">
+            <span>{{sev}}</span>
+            <span>{{health_dist[sev]}}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+    {% endif %}
   </div>
   <div class="modal">
     <div class="modal-background"></div>

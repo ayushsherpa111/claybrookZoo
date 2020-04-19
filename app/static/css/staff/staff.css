@@ -7,6 +7,7 @@
   margin-top: 22px;
   width: 98%;
   display: flex;
+  flex-direction: row-reverse;
   overflow-x: auto;
   margin-bottom: 1.1rem;
   overflow-y: hidden;
@@ -84,9 +85,6 @@
 @media (max-width: 1400px) {
   .infoCard {
     margin-right: 1.1rem;
-  }
-  .infoCard:last-child {
-    margin: 0;
   }
 }
 

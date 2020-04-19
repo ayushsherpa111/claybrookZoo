@@ -1,0 +1,40 @@
+.animalDetails {
+  width: 100%;
+  margin-bottom: 1rem;
+  padding: 1rem;
+}
+
+.infoCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.titleDiv {
+  padding: 1em;
+}
+figure {
+  transition: all 100ms ease-out;
+}
+figure:hover {
+  cursor: pointer;
+  transform: translate(16px, -13px);
+}
+
+.card {
+  color: white;
+  max-width: 85%;
+  background-color: #d1161663;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+.archive a img {
+  width: 3rem;
+}
+.card strong {
+  color: white;
+}
+.title {
+  color: whitesmoke !important;
+  font-weight: 100;
+}

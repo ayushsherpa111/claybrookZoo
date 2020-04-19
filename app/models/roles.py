@@ -24,11 +24,9 @@ class Manager(User):
     self.__dict__.update(args[1])
 
 
-class Sponsor(User):
+class Sponsor:
   def __init__(self, *args):
-    super().__init__(args[0])
-    args[1].update({'role':"Sponsor"})
-    self.__dict__.update(args[1])
+    self.__dict__.update(args[0])
   
   def setBand(self,band):
     self.__dict__({'band':band})

@@ -68,3 +68,21 @@
   color: white;
   padding: 5px;
 }
+
+.notif{
+  font-weight: 700;
+  padding: 0.7rem;
+  top: -28%;
+  position: absolute;
+  background: red;
+  filter: invert(1);
+  color: white;
+  align-items: center;
+  border-radius: 50%;
+  display: flex;
+  width: 1rem;
+  height: 1rem;
+  left: 39%;
+  border: 3px solid #2e4190;
+  justify-content: center;
+}

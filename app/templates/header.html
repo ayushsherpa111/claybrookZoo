@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="static/css/head.css">
-<script defer src="static/js/head.js"></script>
+<link rel="stylesheet" href="{{url_for('static',filename='css/head.css')}}">
+<script defer src="{{url_for('static',filename='js/head.js')}}"></script>
 <div class="toggle">
   <a role="button" id="togBtn" class="navbar-burger" aria-label="menu" aria-expanded="false">
     <span aria-hidden="true"></span>
@@ -16,10 +16,10 @@
       <a class="navbar-item" href="tickets">
         Tickets
       </a>
-      <a class="navbar-item" href="register">
+      <a class="navbar-item" href="/sponsor">
         Sponsor
       </a>
-      <a class="navbar-item" href="map">
+      <a class="navbar-item" href="{{url_for('static',filename="images/map.bmp")}}">
         Map
       </a>
       <a class="navbar-item" href="about">
@@ -30,12 +30,17 @@
       </a>
     </div>
     <div class="navbar-end">
+      <form action="search" method="POST">
       <p class="control has-icons-left searchInp" >
-        <input class="input" type="email" placeholder="Search Your Favorite Animal">
-        <span class="icon is-small is-left">
-          <i class="fa fa-search"></i>
-        </span>
-      </p>
+          <input class="input" required type="text" placeholder="Search Your Favorite Animal" name="animal">
+          <span class="icon is-small is-left">
+            <img src="{{url_for('static',filename='images/search.png')}}" alt="" style="width:1.5rem">
+          </span>
+          <button type="submit" class="button" style="margin-left: 0.5rem; padding-left: calc(.75em - 1px);padding-right: calc(.75em - 1px)">
+            <img src="{{url_for('static',filename='images/srch.png')}}" alt="" srcset="" style="width: 2rem">
+          </button>
+        </p>
+      </form>
 
       <div class="events">
         <div class="count">
@@ -45,7 +50,11 @@
       </div>
       {% if session.get('current_user',None) and session.get('current_user')['role'] %}
       <a class="logout" href="logout">
-        <img src="static/images/power.png" alt="">
+        <img src="{{url_for('static',filename='images/power.png')}}" alt="">
+      </a>
+      {% else %}
+      <a class="logout" href="login">
+        <img src="{{url_for('static',filename='images/login.png')}}" alt="">
       </a>
       {% endif %}
     </div>
